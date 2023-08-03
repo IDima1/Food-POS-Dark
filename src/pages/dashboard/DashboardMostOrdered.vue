@@ -13,8 +13,8 @@
         <div class="v-dashboard-most-ordered__content">
             <div class="v-dashboard-most-ordered__content-menu">
                 <div v-for="dish in menuItems" 
-                :key="dish.name" 
-                class="v-dashboard-most-ordered__content-menu-dish">
+                    :key="dish.name" 
+                    class="v-dashboard-most-ordered__content-menu-dish">
                     <img :src="dish.image" :alt="dish.name">
                     <div>
                         <p class="v-dashboard-most-ordered__content-menu-dish-name">{{ dish.name }}</p>
@@ -29,9 +29,9 @@
     </div>
 </template>
 <script>
-import DumplingImg from '../../assets/dishes/dumpling.svg'
+import DumplingImg from '@/assets/dishes/dumpling.svg'
 export default {
-    name: 'v-dashboard-most-ordered',
+    name: 'DashboardMostOrdered',
     data() {
         return {
             menuItems: [
@@ -60,7 +60,8 @@ export default {
     }
 }
 </script>
-<style>
+
+<style scoped>
 .v-dashboard-most-ordered {
     grid-area: 1 / 3 / 4 / 4;
     display: flex;
@@ -104,7 +105,7 @@ export default {
     border-radius: 8px;
     border: 1px solid #393C49;
     background: #1F1D2B;
-    background: url(/src/assets/icons/arrow-ios-down.svg) no-repeat left 14px center;
+    background: url(@/assets/icons/arrow-ios-down.svg) no-repeat left 14px center;
     padding-left: 44px;
     font-family: Barlow;
     font-size: 14px;

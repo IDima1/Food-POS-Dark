@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="v-menu__list">
-        <vMenuDish
+        <DishSmallCard
             v-for="dish in DISHES"
             :key="dish.article"
             :dish_data="dish"
@@ -22,13 +22,12 @@
 </template>
 
 <script>
-import vMenuDish from './v-menu-dish.vue';
+import DishSmallCard from '@/cards/DishSmallCard.vue';
 import { mapActions, mapGetters } from 'vuex';
-
 export default {
-    name: 'v-menu',
+    name: 'HomepageMenu',
     components: {
-        vMenuDish
+        DishSmallCard
     },
     props: {},
     computed: {
@@ -49,7 +48,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .v-menu {
     grid-area: 2 / 2 / 4 / 3;
 }
@@ -57,9 +56,28 @@ export default {
 .v-menu__list {
     margin-top: 50px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    grid-gap: 50px;
+    flex-wrap: wrap;
+    grid-column-gap: 28px;
+    grid-row-gap: 58px;
+}
+
+@media screen and (max-width: 600px) {
+    .v-menu__list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .v-menu__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 901px) {
+    .v-menu__list {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 .v-menu__header {

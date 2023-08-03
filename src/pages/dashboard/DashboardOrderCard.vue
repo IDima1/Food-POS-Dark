@@ -1,15 +1,17 @@
 <template>
     <div class="v-dashboard-order-card">
-      <div v-for="card in getPositivePercentage" :key="card.title" class="v-dashboard-order-card__card-detail">
+      <div v-for="card in getPositivePercentage" 
+        :key="card.title" 
+        class="v-dashboard-order-card__card-detail">
         <div class="v-dashboard-order-card__card-detail-title-1">
           <img :src="card.icon" class="icon">
           <p :class="{ 'green-text': card.positivePercentage, 'red-text': !card.positivePercentage }">
             {{ card.percentage }}
           </p>
           <img
-          :src="card.positivePercentage ? card.arrowUpIcon : card.arrowDownIcon"
-          class="arrow"
-          :style="{ backgroundColor: card.positivePercentage ? 'rgba(136, 224, 145, 0.24)' : 'rgba(255, 100, 113, 0.24)' }"
+            :src="card.positivePercentage ? card.arrowUpIcon : card.arrowDownIcon"
+            class="arrow"
+            :style="{ backgroundColor: card.positivePercentage ? 'rgba(136, 224, 145, 0.24)' : 'rgba(255, 100, 113, 0.24)' }"
           >
         </div>
         <div class="v-dashboard-order-card__card-content">
@@ -18,16 +20,17 @@
         </div>
       </div>
     </div>
-  </template>
+</template>
+
 <script>
-import CoinIcon from '../../assets/icons/Coin.svg'
-import OrderIcon from '../../assets/icons/Order.svg'
-import CustomerIcon from '../../assets/icons/Customer.svg'
-import ArrowUpIcon from '../../assets/icons/Arrow-up-green.svg'
-import ArrowDownIcon from '../../assets/icons/Arrow-down-red.svg'
+import CoinIcon from '@/assets/icons/Coin.svg'
+import OrderIcon from '@/assets/icons/Order.svg'
+import CustomerIcon from '@/assets/icons/Customer.svg'
+import ArrowUpIcon from '@/assets/icons/Arrow-up-green.svg'
+import ArrowDownIcon from '@/assets/icons/Arrow-down-red.svg'
 
 export default {
-    name: 'v-dashboard-order-card',
+    name: 'DashboardOrderCard',
     data() {
         return {
             cardDetails: [
@@ -68,7 +71,8 @@ export default {
     },
 }
 </script>
-<style>
+
+<style scoped>
 .v-dashboard-order-card {
     grid-area: 2 / 2 / 3 / 3;
     display: flex;

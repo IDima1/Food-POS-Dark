@@ -8,7 +8,7 @@
             </div>
             <div class="v-header__main_search_bar">
                 <input type="text" placeholder="Search for food, coffee, etc..">
-                <img src="../../assets/icons/Search.svg" alt="" >
+                <img src="@/assets/icons/Search.svg" alt="" >
             </div>
         </div>
         </header>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-    name: "v-header",
+    name: "HomepageHeader",
     data() {
         return {
             selectedCategory: 'Hot Dishes',

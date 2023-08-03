@@ -1,10 +1,10 @@
 <template>
     <div class="v-setting-option">
         <div
-        v-for="(tab, index) in tabs"
-        :key="index"
-        :class="['v-setting-option__content', { 'active-tab': index === activeTab }]"
-        @click="selectTab(index)"
+            v-for="(tab, index) in tabs"
+            :key="index"
+            :class="['v-setting-option__content', { 'active-tab': index === activeTab }]"
+            @click="selectTab(index)"
         >
             <div class="v-setting-option__content-prop">
                 <img :src="tab.img" alt="">
@@ -14,13 +14,14 @@
         </div>
   </div>
 </template>
+
 <script>
-import AppereanceIcon from '../../assets/icons/Appereance.svg';
-import RestaurantIcon from '../../assets/icons/Restaurant.svg';
-import DiscountIcon from '../../assets/icons/Appereance.svg';
-import NotificationIcon from '../../assets/icons/Restaurant.svg';
-import SecurityIcon from '../../assets/icons/Appereance.svg';
-import About_UsIcon from '../../assets/icons/Restaurant.svg';
+import AppereanceIcon from '@/assets/icons/Appereance.svg';
+import RestaurantIcon from '@/assets/icons/Restaurant.svg';
+import DiscountIcon from '@/assets/icons/Appereance.svg';
+import NotificationIcon from '@/assets/icons/Restaurant.svg';
+import SecurityIcon from '@/assets/icons/Appereance.svg';
+import About_UsIcon from '@/assets/icons/Restaurant.svg';
 
 export default {
     name: 'v-setting-option',
@@ -74,7 +75,8 @@ export default {
     }
 }
 </script>
-<style>
+
+<style scoped>
 .v-setting-option {
     grid-area: 2 / 2 / 3 / 3;
     display: inline-flex;

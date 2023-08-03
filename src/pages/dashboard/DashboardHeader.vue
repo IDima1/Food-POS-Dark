@@ -9,10 +9,10 @@
 </template>
 <script>
 export default {
-    name: 'v-dashboard-header'
+    name: 'DashboardHeader'
 }
 </script>
-<style>
+<style scoped>
 .v-dashboard-header {
     grid-area: 1 / 2 / 2 / 3;
     display: flex;

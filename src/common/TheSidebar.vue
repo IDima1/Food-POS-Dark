@@ -7,37 +7,37 @@
             <div class="v-sidebar__menu_item"
                 :class="{ 'active-item': isActive('/') }"
                 @click="$router.push('/')">
-                <img src="../assets/icons/Home.svg" alt=""/>
+                <img src="@/assets/icons/Home.svg" alt=""/>
             </div>
             <div class="v-sidebar__menu_item"
                 :class="{ 'active-item': isActive('/discount') }"
                 @click="showAlert">
-                <img src="../assets/icons/Discount.svg" alt=""/>
+                <img src="@/assets/icons/Discount.svg" alt=""/>
             </div>
             <div class="v-sidebar__menu_item"
                 :class="{ 'active-item': isActive('/dashboard') }"
                 @click="$router.push('/dashboard')">
-                <img src="../assets/icons/Dashboard.svg" alt=""/>
+                <img src="@/assets/icons/Dashboard.svg" alt=""/>
             </div>
             <div class="v-sidebar__menu_item"
                 :class="{ 'active-item': isActive('/messages') }"
                 @click="showAlert">
-                <img src="../assets/icons/Message.svg" alt=""/>
+                <img src="@/assets/icons/Message.svg" alt=""/>
             </div>
             <div class="v-sidebar__menu_item"
                 :class="{ 'active-item': isActive('/notifications') }"
                 @click="showAlert">
-                <img src="../assets/icons/Notification.svg" alt=""/>
+                <img src="@/assets/icons/Notification.svg" alt=""/>
             </div>
             <div class="v-sidebar__menu_item"
                 :class="{ 'active-item': isActive('/settings') }"
                 @click="$router.push('/settings')">
-                <img src="../assets/icons/Setting.svg" alt=""/>
+                <img src="@/assets/icons/Setting.svg" alt=""/>
             </div>
             <div class="v-sidebar__menu_logout"
                 :class="{ 'active-item': isActive('/payment') }"
                 @click="showAlert">
-                <img src="../assets/icons/Log Out.svg" alt=""/>
+                <img src="@/assets/icons/Log Out.svg" alt=""/>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
 
 <script>
 export default {
-    name: "v-side-bar",
+    name: "TheSidebar",
     data() {
         return {
             activeItem: null
@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .v-sidebar {
     grid-area: 1 / 1 / 6 / 2;
     padding: 20px 0px;

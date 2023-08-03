@@ -25,17 +25,17 @@
                 class="v-dashboard-order-report__rows-all-1"
                 >
                     <div>
-                        <img src="../../assets/avatars/Avatar 1.svg" alt="">
+                        <img src="@/assets/avatars/Avatar 1.svg" alt="">
                         <p class="v-dashboard-order-report__rows-all-1-name">{{ order.name }}</p>
                     </div>
                     <p class="v-dashboard-order-report__rows-all-1-menu">{{ order.menu }}</p>
                     <p class="v-dashboard-order-report__rows-all-1-payment">{{ order.payment }}</p>
                     <p
                     :class="{
-                    'v-dashboard-order-report__rows-all-1-status': true,
-                    'v-dashboard-order-report__rows-all-1-status--completed': order.status === 'Completed',
-                    'v-dashboard-order-report__rows-all-1-status--preparing': order.status === 'Preparing',
-                    'v-dashboard-order-report__rows-all-1-status--pending': order.status === 'Pending'
+                        'v-dashboard-order-report__rows-all-1-status': true,
+                        'v-dashboard-order-report__rows-all-1-status--completed': order.status === 'Completed',
+                        'v-dashboard-order-report__rows-all-1-status--preparing': order.status === 'Preparing',
+                        'v-dashboard-order-report__rows-all-1-status--pending': order.status === 'Pending'
                     }"
                     >{{ order.status }}</p>
                 </div> 
@@ -43,11 +43,12 @@
         </div>
     </div>
 </template>
+
 <script>
 import orderReportData from '../../data/order-report.js';
 
 export default {
-    name: 'v-dashboard-order-report',
+    name: 'DashboardOrderReport',
     data() {
         return {
             orderReportData: orderReportData,
@@ -55,7 +56,8 @@ export default {
     }
 }
 </script>
-<style>
+
+<style scoped>
 .v-dashboard-order-report {
     grid-area:  3 / 2 / 6 / 3;
     display: flex;

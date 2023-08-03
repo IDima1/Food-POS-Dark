@@ -1,6 +1,6 @@
 <template>
     <div class = 'v-menu-dish' @click="addToCart">
-            <img class="v-menu-dish__image" v-bind:src="'../src/assets/dishes/' + dish_data.image" alt="img">
+            <img class="v-menu-dish__image" :src="'../src/assets/dishes/' + dish_data.image" alt="img">
         <div class='v-menu-dish__text'>
             <h3 class ="v-menu-dish__name">{{ dish_data.name }}</h3>
             <p class ="v-menu-dish__price">$ {{ dish_data.price }}</p>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: 'v-menu-dish',
+    name: 'DishSmallCard',
     props: {
         dish_data: {
             type: Object,

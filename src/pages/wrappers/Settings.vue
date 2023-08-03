@@ -1,23 +1,25 @@
 <template>
     <div class="v-setting">
         <h1 class="v-setting-header">Settings</h1>
-        <vSettingOption/>
-        <vProductManagement/>
+        <SettingsOption/>
+        <SettingsProductManagement/>
     </div>
 </template>
+
 <script>
-import vSettingOption from './v-setting-option.vue';
-import vProductManagement from './v-product-management.vue';
+import SettingsOption from '@/pages/settings/SettingsOption.vue';
+import SettingsProductManagement from '@/pages/settings/SettingsProductManagement.vue';
 
 export default {
-    name: 'v-setting',
+    name: 'Settings',
     components: {
-        vSettingOption,
-        vProductManagement
+        SettingsOption,
+        SettingsProductManagement
     }
 }
 </script>
-<style>
+
+<style scoped>
 .v-setting {
     display: grid;
     grid-template-columns: 104px 275px auto;

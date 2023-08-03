@@ -1,24 +1,22 @@
 <template>
     <div class="app">
-        <vSideBar/>
+        <TheSideBar/>
         <router-view></router-view>
     </div>
 </template>
 
 <script> 
-import vSideBar from './components/v-side-bar.vue';
+import TheSideBar from '@/common/TheSidebar.vue';
 
 export default {
     name: 'app',
     components: {
-        vSideBar,
+        TheSideBar,
     },
 }
 </script>
 
 <style>
-@import 'https://fonts.googleapis.com/css2?family=Barlow&display=swap';
-
 * {
     margin: 0;
     padding: 0;

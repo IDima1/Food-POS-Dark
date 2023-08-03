@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import dishes from '../data/dishes';
+import dishes from '@/data/dishes.js';
 
 let store = createStore({
     state: {

@@ -15,12 +15,12 @@
         </div>
         <div class="v-dashboard-most-type-of-order__chart">
             <div class="v-dashboard-most-type-of-order__chart">
-                <img src="../../../public/Circle.svg" alt="">
+                <img src="@/assets/Circle.svg" alt="">
             </div>
 
             <div class="v-dashboard-most-type-of-order__chart__info">
                 <div class="v-dashboard-most-type-of-order__chart__info__group">
-                    <img src="../../assets/icons/Ellipse-pink.svg" alt="">
+                    <img src="@/assets/icons/Ellipse-pink.svg" alt="">
                     <div class="v-dashboard-most-type-of-order__chart__info__group__frame">
                         <p class="header">Dine In</p>
                         <p class="customers">200 customers</p>
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="v-dashboard-most-type-of-order__chart__info__group">
-                    <img src="../../assets/icons/Ellipse-yellow.svg" alt="">
+                    <img src="@/assets/icons/Ellipse-yellow.svg" alt="">
                     <div class="v-dashboard-most-type-of-order__chart__info__group__frame">
                         <p class="header">To Go</p>
                         <p class="customers">122 customers</p>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="v-dashboard-most-type-of-order__chart__info__group">
-                    <img src="../../assets/icons/Ellipse-blue.svg" alt="">
+                    <img src="@/assets/icons/Ellipse-blue.svg" alt="">
                     <div class="v-dashboard-most-type-of-order__chart__info__group__frame">
                         <p class="header">Delivery</p>
                         <p class="customers">264 customers</p>
@@ -66,10 +66,11 @@
 </template>
 <script>
 export default {
-    name: 'v-dashboard-most-type-of-order'
+    name: 'DashboardMostTypeOfOrder'
 }
 </script>
-<style>
+
+<style scoped>
 .v-dashboard-most-type-of-order {
     grid-area: 4 / 3 / 6 / 4;
 
@@ -114,7 +115,7 @@ export default {
     border-radius: 8px;
     border: 1px solid #393C49;
     background: #1F1D2B;
-    background: url(/src/assets/icons/arrow-ios-down.svg) no-repeat left 14px center;
+    background: url(@/assets/icons/arrow-ios-down.svg) no-repeat left 14px center;
     padding-left: 44px;
     font-family: Barlow;
     font-size: 14px;

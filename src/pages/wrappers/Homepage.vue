@@ -1,24 +1,23 @@
 <template>
     <div class="v-homepage">
-        <vHeader/>    
-        <vMenu/>
-        <vCart
-            v-bind:cart_data="CART"
-        />
+        <HomepageHeader/>    
+        <HomepageMenu/>
+        <Cart :cart_data="CART"/>
     </div>
 </template>
+
 <script>
-import vMenu from './v-menu.vue';
-import vCart from './v-cart.vue';
-import vHeader from './v-header.vue';
-import {mapGetters} from 'vuex'
+import HomepageHeader from '@/pages/homepage/HomepageHeader.vue';
+import HomepageMenu from '@/pages/homepage/HomepageMenu.vue';
+import Cart from '@/pages/cart/Cart.vue';
+import { mapGetters } from 'vuex';
 
 export default {
-    name: 'v-homepage',
+    name: 'Homepage',
     components: {
-        vMenu,
-        vCart,
-        vHeader
+        HomepageHeader,
+        HomepageMenu,
+        Cart,
     },
     props: {},
     computed: {
@@ -26,9 +25,10 @@ export default {
             'CART'
         ])
     }
-}
+};
 </script>
-<style>
+
+<style scoped>
 .v-homepage {
     display: grid;
     grid-template-columns: 104px 1fr 406px;

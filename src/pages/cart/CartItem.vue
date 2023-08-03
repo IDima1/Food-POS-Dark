@@ -14,7 +14,7 @@
         <div class="v-cart-item__info-note">
             <input type="text" placeholder="Order Note..." />
             <div @click="deleteFromCart">
-                <img src="../../assets/icons/Trash.svg" alt=""
+                <img src="@/assets/icons/Trash.svg" alt=""
                 >
             </div>
         </div>
@@ -25,12 +25,12 @@
 import { reactive } from 'vue';
 
 export default {
-    name: 'v-cart-item',
+    name: 'CartItem',
     props: {
         cart_item_data: {
             type: Object,
             default() {
-                return {}
+                return {};
             }
         }
     },
@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .v-cart-item {
     margin-top: 24px;
     height: 106px;

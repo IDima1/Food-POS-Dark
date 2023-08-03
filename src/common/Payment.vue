@@ -13,19 +13,19 @@
                         <div class="v-payment__content__payment-method__tabs__data"
                             :class="{selected: selectedPaymentMethod === 'Credit Card'}"
                             @click="selectPaymentMethod('Credit Card')">
-                            <img src="../../assets/icons/Card.svg" alt="">
+                            <img src="@/assets/icons/Card.svg" alt="">
                             Credit Card
                     </div>
                         <div class="v-payment__content__payment-method__tabs__data"
                             :class="{selected: selectedPaymentMethod === 'Paypal'}"
                             @click="selectPaymentMethod('Paypal')">
-                            <img src="../../assets/icons/Paypal.svg" alt="">
+                            <img src="@/assets/icons/Paypal.svg" alt="">
                             Paypal
                         </div>
                         <div class="v-payment__content__payment-method__tabs__data"
                             :class="{selected: selectedPaymentMethod === 'Cash'}"
                             @click="selectPaymentMethod('Cash')">
-                            <img src="../../assets/icons/Wallet.svg" alt="">
+                            <img src="@/assets/icons/Wallet.svg" alt="">
                             Cash
                         </div>
                     </div>
@@ -76,7 +76,7 @@
 </template>
 <script>
 export default {
-    name: 'v-payment',
+    name: 'Payment',
     data() {
         return {
             selectedPaymentMethod: null
@@ -202,7 +202,7 @@ export default {
 }
 
 .v-payment__content__payment-method__tabs__data.selected::after {
-    content: url('../../assets/icons/Mask.svg');
+    content: url('@/assets/icons/Mask.svg');
     position: absolute;
     top: 6px;
     right: 6px;
@@ -284,7 +284,7 @@ export default {
     border: 1px solid #393C49;
 
     background: #1F1D2B;
-    background: url('../../assets/icons/arrow-ios-down.svg') no-repeat left 14px center;
+    background: url('@/assets/icons/arrow-ios-down.svg') no-repeat left 14px center;
     padding-left: 44px;
 
     font-family: Barlow;

@@ -4,16 +4,16 @@
             <div class="v-product-management__header__title">
                 <h2>Products Management</h2>
                 <button @click="onCategories">
-                    <img src="../../assets/icons/Option.svg" alt="">
+                    <img src="@/assets/icons/Option.svg" alt="">
                     <p>Manage Categories</p>
                 </button>
             </div>
             <div class="v-product-management__header__tab">
                 <p
-                v-for="category in categories"
-                :key="category"
-                @click="selectCategory(category)"
-                :class="{ 'selected': selectedCategory === category}"
+                    v-for="category in categories"
+                    :key="category"
+                    @click="selectCategory(category)"
+                    :class="{ 'selected': selectedCategory === category}"
             >{{ category }}</p>
             </div>
         </div>
@@ -24,12 +24,12 @@
                     <div class="v-product-management__content__add-product">
                         <div class="v-product-management__content__add-product__rectangle">
                             <button @click="addNewDish">
-                                <img src="../../assets/icons/Add.svg" alt="">
+                                <img src="@/assets/icons/Add.svg" alt="">
                             </button>
                             <p>Add new dish</p>
                         </div>
                     </div>
-                    <vMenuDishBigCard
+                    <DishBigCard
                     v-for="(dish, index) in DISHES"
                     :key="dish.article"
                     :dish_data="dish"
@@ -45,13 +45,14 @@
             </div>
     </div>
 </template>
+
 <script>
-import vMenuDishBigCard from '../v-menu-dish-big-card.vue';
+import DishBigCard from '@/cards/DishBigCard.vue';
 import { mapGetters } from 'vuex';
 export default {
-    name: 'v-product-management',
+    name: 'SettingsProductManagement',
     components: {
-        vMenuDishBigCard
+        DishBigCard
     },
     data() {
         return {
@@ -83,6 +84,7 @@ export default {
 
 }
 </script>
+
 <style scoped>
 
 .v-product-management {

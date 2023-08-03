@@ -9,13 +9,13 @@
                 <p class="v-menu-dish-big-card__available"> {{ dish_data.available }} Bowls </p>
             </div>  
         </div>
-        <button><img src="../assets/icons/Edit.svg" alt=""><p>Edit dish</p></button>
+        <button><img src="@/assets/icons/Edit.svg" alt=""><p>Edit dish</p></button>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'v-menu-dish-no-style',
+    name: 'DishBigCard',
     props: {
         dish_data: {
             type: Object,
@@ -23,16 +23,11 @@ export default {
                 return {}
             }
         }
-    },
-    methods: {
-        addToCart() {
-            this.$emit('addToCart', this.dish_data)
-        }
     }
 }
 </script>
 
-<style>
+<style scoped>
 .v-menu-dish-big-card {
     width: 221px;
     height: 299px;

@@ -22,48 +22,47 @@
                 </div>
 
                 <div class="v-cart__header__confirmation" v-else>
-                    <img src="../../assets/icons/Back.svg" alt="">
+                    <img src="@/assets/icons/Back.svg" alt="">
                     <div class="v-cart__header__confirmation__header">
                         <div class="v-cart__header__confirmation__header__title">
                             <h1>Confirmation</h1>
                             <p>Orders #34562</p>
                         </div>
-                        <button><img src="../../assets/icons/Add.svg" alt=""></button>
+                        <button><img src="@/assets/icons/Add.svg" alt=""></button>
                     </div>
                     
                 </div>
                 <div class="v-cart__devider-content"></div>
-                <div class="v-cart-content">
-                    <div class="v-cart-items">
-                        <v-cart-item
-                        v-for="(item, index) in cart_data"
-                        :key="item.article"
-                        :cart_item_data="item"
-                        @deleteFromCart="deleteFromCart(index)"
-                        />
-                    </div>
-                    
-                    <div class="v-cart__devider"></div>
-                    <div class="v-cart-total">
-                        <div class="v-cart-total__disaccount">
-                            <p class="name">Disacount</p>
-                            <p class="cost">$ 0</p>
+                    <div class="v-cart-content">
+                        <div class="v-cart-items">
+                            <CartItem
+                                v-for="(item, index) in cart_data"
+                                :key="item.article"
+                                :cart_item_data="item"
+                                @deleteFromCart="deleteFromCart(index)"
+                            />
                         </div>
-                        <div class="v-cart-total__subtotal">
-                            <p class="name">Sub Total</p>
-                            <p class="cost">{{ calculateSubTotal }}</p>
+                        <div class="v-cart__devider"></div>
+                        <div class="v-cart-total">
+                            <div class="v-cart-total__disaccount">
+                                <p class="name">Disacount</p>
+                                <p class="cost">$ 0</p>
+                            </div>
+                            <div class="v-cart-total__subtotal">
+                                <p class="name">Sub Total</p>
+                                <p class="cost">{{ calculateSubTotal }}</p>
+                            </div>
                         </div>
                     </div>
+                    <button 
+                        class="v-cart-order-payment" 
+                        @click="showPayment = true"
+                        v-if="!showPayment">
+                        Continue To Payment
+                    </button>
                 </div>
-                <button 
-                class="v-cart-order-payment" 
-                @click="showPayment = true"
-                v-if="!showPayment">
-                Continue To Payment
-                </button>
-            </div>
             <div class="v-cart-payment">
-                <v-payment 
+                <Payment 
                     v-show="showPayment" 
                     @closePayment="showPayment = false" 
                 />
@@ -73,22 +72,22 @@
     </div>
 </template>
 
-<script>
-import vCartItem from './v-cart-item.vue';
-import vPayment from './v-payment.vue';
-import {mapActions} from 'vuex';
+<script scoped>
+import CartItem from '@/pages/cart/CartItem.vue';
+import Payment from '@/common/Payment.vue';
+import { mapActions } from 'vuex';
 
 export default {
-    name: 'v-cart',
+    name: 'Cart',
     components: {
-        vCartItem,
-        vPayment
+        CartItem,
+        Payment
     },
     props: {
         cart_data: {
             type: Array,
             default() {
-                return []
+                return [];
             }
         }
     },
@@ -120,7 +119,7 @@ export default {
             this.selectedCategory = category;
             console.log('Selected category:', category)
         },
-    }
+    } 
 }
 </script>
 
@@ -361,4 +360,10 @@ export default {
     display: block;
 }
 
+
+.cart-empty-message {
+    color: #fff;
+    text-align: center;
+    margin-top: 24px;
+}
 </style>

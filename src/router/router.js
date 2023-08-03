@@ -1,29 +1,33 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { 
+    createRouter, 
+    createWebHistory 
+} from 'vue-router';
 
-import vHomepage from '../components/Homepage/v-homepage.vue'
-import vDashboard from '../components/Dashboad/v-dashboard.vue'
-import vSetting from '../components/Settings/v-setting.vue'
-
-import vPayment from '../components/Homepage/v-payment.vue'
+import ROUTE_NAMES from '@/enums/enums.js'
 
 const routes = [
     {
         path: '/',
-        component: vHomepage
+        name: ROUTE_NAMES.home,
+        component: () => import('@/pages/wrappers/Homepage.vue'),
     },
     {
         path: '/dashboard',
-        component: vDashboard
+        name: ROUTE_NAMES.dashboard,
+        component: () => import('@/pages/wrappers/Dashboard.vue'),
     },
     {
         path: '/settings',
-        component: vSetting
+        name: ROUTE_NAMES.settings,
+        component: () => import('@/pages/wrappers/Settings.vue'),
     },
 ];
 
 const router = createRouter({
+    history: createWebHistory(),
     routes,
-    history: createWebHistory()
+    scrollBehavior: () =>({top: 0, left: 0}),
+    
 });
 
 export default router;
