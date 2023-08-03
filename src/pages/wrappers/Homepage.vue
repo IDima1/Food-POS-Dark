@@ -1,31 +1,34 @@
 <template>
     <div class="v-homepage">
-        <HomepageHeader/>    
-        <HomepageMenu/>
-        <Cart :cart_data="CART"/>
+        <HomepageHeader />
+        <HomepageMenu />
+        <Cart :cart_data="cart" />
     </div>
-</template>
-
+  </template>
+  
 <script>
-import HomepageHeader from '@/pages/homepage/HomepageHeader.vue';
-import HomepageMenu from '@/pages/homepage/HomepageMenu.vue';
-import Cart from '@/pages/cart/Cart.vue';
-import { mapGetters } from 'vuex';
-
-export default {
-    name: 'Homepage',
+import HomepageHeader from "@/pages/homepage/HomepageHeader.vue";
+import HomepageMenu from "@/pages/homepage/HomepageMenu.vue";
+import Cart from "@/pages/cart/Cart.vue";
+import { defineComponent } from "vue";
+import { useStore } from "@/pinia/pinia.js";
+  
+export default defineComponent({
+    name: "Homepage",
     components: {
         HomepageHeader,
         HomepageMenu,
         Cart,
     },
-    props: {},
-    computed: {
-        ...mapGetters([
-            'CART'
-        ])
-    }
-};
+    setup() {
+        const store = useStore();
+        const cart = store.CART;
+
+        return {
+            cart,
+        };
+    },
+});
 </script>
 
 <style scoped>

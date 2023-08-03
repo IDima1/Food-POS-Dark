@@ -1,9 +1,10 @@
 <template>
     <div>
-        <div class="v-cart-container"
-            :class="{ 'show-payment': showPayment }"
-            :style="{'transform': showPayment ? 'translateX(-409px)' : 'none'}">
-            <div class = 'v-cart'>
+        <div class="v-cart-container" 
+        :class="{ 'show-payment': showPayment }" 
+        :style="{'transform': showPayment ? 'translateX(-409px)' : 'none'}"
+        >
+            <div class="v-cart">
                 <div class="v-cart__header" v-if="!showPayment">
                     <h2>#Order 34562</h2>
                     <div class="v-cart__selectors">
@@ -20,7 +21,6 @@
                         <p>Price</p>
                     </div>
                 </div>
-
                 <div class="v-cart__header__confirmation" v-else>
                     <img src="@/assets/icons/Back.svg" alt="">
                     <div class="v-cart__header__confirmation__header">
@@ -28,102 +28,121 @@
                             <h1>Confirmation</h1>
                             <p>Orders #34562</p>
                         </div>
-                        <button><img src="@/assets/icons/Add.svg" alt=""></button>
+                        <button>
+                            <img src="@/assets/icons/Add.svg" alt="">
+                        </button>
                     </div>
-                    
                 </div>
                 <div class="v-cart__devider-content"></div>
-                    <div class="v-cart-content">
-                        <div class="v-cart-items">
-                            <CartItem
-                                v-for="(item, index) in cart_data"
-                                :key="item.article"
-                                :cart_item_data="item"
-                                @deleteFromCart="deleteFromCart(index)"
-                            />
+                <div class="v-cart-content">
+                    <div class="v-cart-items">
+                        <CartItem
+                            v-for="(item, index) in cartItems"
+                            :key="item.article"
+                            :cart_item_data="item"
+                            @deleteFromCart="deleteFromCart(index)"
+                        />
+                    </div>
+                    <div class="v-cart__devider"></div>
+                    <div class="v-cart-total">
+                        <div class="v-cart-total__disaccount">
+                            <p class="name">Disacount</p>
+                            <p class="cost">$ 0</p>
                         </div>
-                        <div class="v-cart__devider"></div>
-                        <div class="v-cart-total">
-                            <div class="v-cart-total__disaccount">
-                                <p class="name">Disacount</p>
-                                <p class="cost">$ 0</p>
-                            </div>
-                            <div class="v-cart-total__subtotal">
-                                <p class="name">Sub Total</p>
-                                <p class="cost">{{ calculateSubTotal }}</p>
-                            </div>
+                        <div class="v-cart-total__subtotal">
+                            <p class="name">Sub Total</p>
+                            <p class="cost">{{ calculateSubTotal() }}</p>
                         </div>
                     </div>
-                    <button 
-                        class="v-cart-order-payment" 
-                        @click="showPayment = true"
-                        v-if="!showPayment">
-                        Continue To Payment
-                    </button>
                 </div>
+                <button class="v-cart-order-payment" 
+                    @click="showPayment = true" 
+                    v-if="!showPayment"
+                    >
+                    Continue To Payment
+                </button>
+            </div>
             <div class="v-cart-payment">
                 <Payment 
                     v-show="showPayment" 
-                    @closePayment="showPayment = false" 
+                    @closePayment="showPayment" 
                 />
             </div>
         </div>
         <div class="v-cart-overlay" :class="{ 'show-overlay': showPayment }"></div>
     </div>
-</template>
-
-<script scoped>
-import CartItem from '@/pages/cart/CartItem.vue';
-import Payment from '@/common/Payment.vue';
-import { mapActions } from 'vuex';
-
-export default {
-    name: 'Cart',
+  </template>
+  
+<script>
+import CartItem from "@/pages/cart/CartItem.vue";
+import Payment from "@/common/Payment.vue";
+import { defineComponent, computed } from "vue";
+import { useStore } from "@/pinia/pinia.js";
+  
+export default defineComponent({
+    name: "Cart",
     components: {
         CartItem,
-        Payment
+        Payment,
     },
     props: {
         cart_data: {
             type: Array,
             default() {
                 return [];
-            }
-        }
+            },
+        },
     },
-    data() {
-        return {
-            selectedCategory: 'Dine In',
-            categories: ['Dine In', 'To Go', 'Delivery'],
-            showPayment: false,
-            showPaymentHeader: false,
-        }
-    },
-    computed: {
-        calculateSubTotal(){
+    setup(props) {
+        const store = useStore();
+        const categories = ["Dine In", "To Go", "Delivery"];
+        const selectedCategory = "Dine In";
+        
+        const showPayment = computed({
+            get: () => store.SHOW_PAYMENT,
+            set: (value) => store.OPEN_PAYMENT(value),
+        });
+
+        const calculateSubTotal = () => {
             let subtotal = 0;
-            this.cart_data.forEach((item) => {
+            props.cart_data.forEach((item) => {
                 subtotal += item.price * item.quantity;
             });
-            return `$ ${subtotal.toFixed(2)}`; 
-        }
-    },
-    methods: {
-        ...mapActions([
-            'DELETE_FROM_CART',
-        ]),
-        deleteFromCart(index){
-            this.DELETE_FROM_CART(index);
-        },
-        selectCategory(category) {
-            this.selectedCategory = category;
-            console.log('Selected category:', category)
-        },
-    } 
-}
-</script>
+            return `$ ${subtotal.toFixed(2)}`;
+        };
+        
+        const deleteFromCart = (index) => {
+            store.DELETE_FROM_CART(index);
+        };
 
-<style>
+        const selectCategory = (category) => {
+            console.log("Selected category:", category);
+        };
+
+        const showPaymentModal = () => {
+            store.OPEN_PAYMENT();
+        };
+
+        const closePaymentModal = () => {
+            store.CLOSE_PAYMENT();
+        };
+
+        return {
+            categories,
+            selectedCategory,
+            showPayment,
+            calculateSubTotal,
+            deleteFromCart,
+            selectCategory,
+            cartItems: props.cart_data,
+            showPaymentModal,
+            closePaymentModal,
+        };
+    },
+});
+</script>
+  
+<style scoped>
 .v-cart-container {
     position: fixed;
     top: 0;

@@ -1,51 +1,50 @@
 <template>
-     <div class = 'v-menu'> 
-        <div class="v-menu__header"> 
+    <div class="v-menu">
+        <div class="v-menu__header">
             <h2>Choose Dishes</h2>
             <div class="v-menu__dropdown">
                 <select name="dine-in" id="">
                     <option value="1">Dine In</option>
-                    <option value="1">To Go</option>
-                    <option value="1">Delivery</option>
+                    <option value="2">To Go</option>
+                    <option value="3">Delivery</option>
                 </select>
             </div>
         </div>
         <div class="v-menu__list">
-        <DishSmallCard
-            v-for="dish in DISHES"
+            <DishSmallCard
+            v-for="dish in dishes"
             :key="dish.article"
             :dish_data="dish"
             @addToCart="addToCart"
-        />
+            />
         </div>
     </div>
 </template>
-
+  
 <script>
-import DishSmallCard from '@/cards/DishSmallCard.vue';
-import { mapActions, mapGetters } from 'vuex';
-export default {
-    name: 'HomepageMenu',
+import DishSmallCard from "@/cards/DishSmallCard.vue";
+import { defineComponent } from "vue";
+import { useStore } from "@/pinia/pinia.js";
+  
+export default defineComponent({
+    name: "HomepageMenu",
     components: {
-        DishSmallCard
+      DishSmallCard,
     },
-    props: {},
-    computed: {
-        ...mapGetters([
-            'DISHES',
-            'CART'
-        ]),
+    setup() {
+        const store = useStore();
+        const dishes = store.DISHES;
+    
+        const addToCart = (data) => {
+            store.ADD_TO_CART(data);
+        };
+    
+        return {
+            dishes,
+            addToCart,
+        };
     },
-    methods: {
-        ...mapActions([
-            'GET_DISHES_FROM_API',
-            'ADD_TO_CART'
-        ]),
-        addToCart(data){
-            this.ADD_TO_CART(data)
-        }
-    }
-};
+});
 </script>
 
 <style scoped>

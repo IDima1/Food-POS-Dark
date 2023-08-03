@@ -10,11 +10,11 @@
             </div>
             <div class="v-product-management__header__tab">
                 <p
-                    v-for="category in categories"
-                    :key="category"
-                    @click="selectCategory(category)"
-                    :class="{ 'selected': selectedCategory === category}"
-            >{{ category }}</p>
+                v-for="category in categories"
+                :key="category"
+                @click="selectCategory(category)"
+                :class="{ 'selected': selectedCategory === category}"
+                >{{ category }}</p> 
             </div>
         </div>
         <div class="v-product-management__devider"></div>
@@ -26,63 +26,76 @@
                             <button @click="addNewDish">
                                 <img src="@/assets/icons/Add.svg" alt="">
                             </button>
-                            <p>Add new dish</p>
+                        <p>Add new dish</p>
                         </div>
                     </div>
-                    <DishBigCard
-                    v-for="(dish, index) in DISHES"
+                <DishBigCard
+                    v-for="(dish, index) in dishes"
                     :key="dish.article"
                     :dish_data="dish"
-                    />
+                />
                 </div>
             </div>
-           
         </div>
         <div class="v-product-management__devider"></div>
-            <div class="v-product-management__buttons">
-                <button class="v-product-management__buttons__discard" @click="discardChanges">Discard Changes</button>
-                <button class="v-product-management__buttons__save" @click="saveChanges">Save Changes</button>
-            </div>
+        <div class="v-product-management__buttons">
+            <button class="v-product-management__buttons__discard" @click="discardChanges">Discard Changes</button>
+            <button class="v-product-management__buttons__save" @click="saveChanges">Save Changes</button>
+        </div>
     </div>
 </template>
 
 <script>
-import DishBigCard from '@/cards/DishBigCard.vue';
-import { mapGetters } from 'vuex';
-export default {
-    name: 'SettingsProductManagement',
-    components: {
-        DishBigCard
-    },
-    data() {
-        return {
-            selectedCategory: 'Hot Dishes',
-            categories: ['Hot Dishes', 'Cold Dishes', 'Soup', 'Grill', 'Appetizer', 'Dessert']  
-        }
-    },
-    methods: {
-        selectCategory(category) {
-            this.selectedCategory = category;
-            console.log("Selected Category:", category);
-        },
-        onCategories(){
-            console.log('Manage Caterories button push')
-        },
-        addNewDish(){
-            console.log('Calling up the context menu for adding a dish')
-        },
-        discardChanges(){
-            console.log('Changes was discarded')
-        },
-        saveChanges(){
-            console.log('Changes was saved')
-        }
-    },
-    computed: {
-    ...mapGetters(['DISHES'])
-    }
+import DishBigCard from "@/cards/DishBigCard.vue";
+import { defineComponent, ref } from "vue";
+import { useStore } from "@/pinia/pinia.js";
 
-}
+export default defineComponent({
+    name: "SettingsProductManagement",
+    components: {
+        DishBigCard,
+    },
+    setup() {
+        const store = useStore();
+        const dishes = store.DISHES;
+
+        const selectedCategory = ref("Hot Dishes");
+
+        const categories = ["Hot Dishes", "Cold Dishes", "Soup", "Grill", "Appetizer", "Dessert"];
+
+        const selectCategory = (category) => {
+            selectedCategory.value = category;
+            console.log("Selected Category:", category);
+        };
+
+        const onCategories = () => {
+            console.log("Manage Categories button push");
+        };
+
+        const addNewDish = () => {
+            console.log("Calling up the context menu for adding a dish");
+        };
+
+        const discardChanges = () => {
+            console.log("Changes was discarded");
+        };
+
+        const saveChanges = () => {
+            console.log("Changes was saved");
+        };
+
+        return {
+            dishes,
+            selectedCategory,
+            categories,
+            selectCategory,
+            onCategories,
+            addNewDish,
+            discardChanges,
+            saveChanges,
+        };
+    },
+});
 </script>
 
 <style scoped>

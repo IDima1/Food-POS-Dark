@@ -15,7 +15,7 @@
                             @click="selectPaymentMethod('Credit Card')">
                             <img src="@/assets/icons/Card.svg" alt="">
                             Credit Card
-                    </div>
+                        </div>
                         <div class="v-payment__content__payment-method__tabs__data"
                             :class="{selected: selectedPaymentMethod === 'Paypal'}"
                             @click="selectPaymentMethod('Paypal')">
@@ -44,9 +44,10 @@
                             <div>
                                 <p>CVV</p>
                                 <input 
-                                class="v-payment__payment-method__forms__card-cvv" 
-                                placeholder="● ● ●"
-                                type="password"/>
+                                    class="v-payment__payment-method__forms__card-cvv" 
+                                    placeholder="● ● ●"
+                                    type="password"
+                                />
                             </div>
                         </div>
                     </div>
@@ -74,28 +75,39 @@
         </div>
     </div>
 </template>
+
 <script>
-export default {
-    name: 'Payment',
-    data() {
+import { defineComponent, ref } from 'vue';
+import { useStore } from '@/pinia/pinia.js';
+
+export default defineComponent({
+    name: "Payment",
+    setup() {
+        const store = useStore();
+        const selectedPaymentMethod = ref(null);
+
+        const selectPaymentMethod = (method) => {
+            selectedPaymentMethod.value = method;
+        };
+
+        const closePayment = () => {
+            store.CLOSE_PAYMENT();
+        };
+
+        const confirmPayment = () => {
+            console.log("Payment was successful");
+        };
+
         return {
-            selectedPaymentMethod: null
+            selectedPaymentMethod,
+            selectPaymentMethod,
+            closePayment,
+            confirmPayment,
         };
     },
-    methods: {
-        selectPaymentMethod(method) {
-            this.selectedPaymentMethod = method;
-        },
-        closePayment(){
-            this.$emit('closePayment')
-        },
-        confirmPayment(){
-            this.closePayment();
-            console.log('Payment was successful')
-        }
-    }
-}
+});
 </script>
+
 <style scoped>
 .v-payment {
     display: inline-flex;

@@ -31,7 +31,7 @@ export default {
 .dashboard {
     display: grid;
     grid-template-columns: 104px auto 372px;
-    grid-template-rows: repeat(4, 1fr) auto;
+    grid-template-rows: auto auto auto auto;
     grid-column-gap: 24px;
     grid-row-gap: 24px;
     margin-right: 24px;

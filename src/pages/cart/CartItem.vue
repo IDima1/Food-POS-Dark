@@ -1,53 +1,59 @@
 <template>
-    <div class = 'v-cart-item'>
+    <div class="v-cart-item">
         <div class="v-cart-item__info">
             <div class="v-cart-item__info-description">
                 <img class="v-cart-item__info-image" v-bind:src="'../src/assets/dishes/' + cart_item_data.image" alt="img"/>
                 <div class="v-cart-item__info-description__name-price">
-                    <h4>{{ cart_item_data.name }}</h4>
-                    <p class="v-cart-item__price"> $ {{ cart_item_data.price }}</p>
+                    <h4>{{ dish.name }}</h4>
+                    <p class="v-cart-item__price"> $ {{ dish.price }}</p>
                 </div>
-                <div class="v-cart-item__quantity">{{ cart_item_data.quantity }}</div>
-                <p class="v-cart-item__total-price"> $ {{(cart_item_data.price * cart_item_data.quantity).toFixed(2) }}</p>
+                <div class="v-cart-item__quantity">{{ cartItem.quantity }}</div>
+                <p class="v-cart-item__total-price"> $ {{ calculateTotalPrice() }}</p>
             </div>
         </div>
         <div class="v-cart-item__info-note">
             <input type="text" placeholder="Order Note..." />
             <div @click="deleteFromCart">
-                <img src="@/assets/icons/Trash.svg" alt=""
-                >
+                <img src="@/assets/icons/Trash.svg" alt="" />
             </div>
         </div>
     </div>
 </template>
-
+  
 <script>
-import { reactive } from 'vue';
+import { defineComponent } from 'vue';
+import { useStore } from '@/pinia/pinia.js';
 
-export default {
+export default defineComponent({
     name: 'CartItem',
     props: {
         cart_item_data: {
             type: Object,
             default() {
                 return {};
-            }
-        }
-    },
-    methods: {
-        deleteFromCart() {
-            this.$emit('deleteFromCart')
-        }
+            },
+        },
     },
     setup(props) {
-        const cartItemData = reactive(props.cart_item_data);
-        cartItemData.quantity = 1;
+        const store = useStore();
+        const cartItem = store.CART.find((item) => item.article === props.cart_item_data.article);
+
+        const calculateTotalPrice = () => {
+            return (cartItem.price * cartItem.quantity).toFixed(2);
+        };
+
+        const deleteFromCart = () => {
+            store.DELETE_FROM_CART(store.CART.indexOf(cartItem));
+        };
 
         return {
-            cartItemData,
+            dish: cartItem,
+            cartItem,
+            calculateTotalPrice,
+            deleteFromCart,
         };
     },
-}
+});
 </script>
 
 <style scoped>
