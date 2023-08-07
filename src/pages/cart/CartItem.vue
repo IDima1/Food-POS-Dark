@@ -1,19 +1,21 @@
 <template>
-    <div class="v-cart-item">
-        <div class="v-cart-item__info">
-            <div class="v-cart-item__info-description">
-                <img class="v-cart-item__info-image" v-bind:src="'../src/assets/dishes/' + cart_item_data.image" alt="img"/>
-                <div class="v-cart-item__info-description__name-price">
-                    <h4>{{ dish.name }}</h4>
-                    <p class="v-cart-item__price"> $ {{ dish.price }}</p>
+    <div class="cart-item">
+        <div class="cart-item__info">
+            <div class="cart-item__info-description">
+                <img class="cart-item__info-image" v-bind:src="'../src/assets/dishes/' + cart_item_data.image" alt="img"/>
+                <div class="cart-item__info-description__name-price">
+                    <p class="cart-item__info-name normal-medium">{{ dish.name }}</p>
+                    <p class="cart-item__info-price small-medium"> $ {{ dish.price }}</p>
                 </div>
-                <div class="v-cart-item__quantity">{{ cartItem.quantity }}</div>
-                <p class="v-cart-item__total-price"> $ {{ calculateTotalPrice() }}</p>
+                <div class="cart-item__quantity">
+                    <p class="cart-item__quantity-text large-medium">{{ cartItem.quantity }}</p>
+                </div>
+                <p class="cart-item__total-price large-medium"> $ {{ calculateTotalPrice() }}</p>
             </div>
         </div>
-        <div class="v-cart-item__info-note">
-            <input type="text" placeholder="Order Note..." />
-            <div @click="deleteFromCart">
+        <div class="cart-item__note">
+            <input class="cart-item__note-input" type="text" placeholder="Order Note..." />
+            <div class="cart-item__note-button-delete" @click="deleteFromCart">
                 <img src="@/assets/icons/Trash.svg" alt="" />
             </div>
         </div>
@@ -56,20 +58,21 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.v-cart-item {
+<style lang="scss" scoped>
+@import '@/styles/variables.sass';
+.cart-item {
     margin-top: 24px;
     height: 106px;
 }
 
-.v-cart-item__info-description {
+.cart-item__info-description {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: $white;
 }
 
-.v-cart-item__info-description__name-price {
+.cart-item__info-description__name-price {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,7 +80,7 @@ export default defineComponent({
     flex-grow: 2;
 }
 
-.v-cart-item__info-description img {
+.cart-item__info-image {
     width: 40px;
     height: 40px;
     margin-right: 15px;
@@ -85,102 +88,61 @@ export default defineComponent({
     margin-right: 7px;
 }
 
-.v-cart-item__info-description h4 {
-    color: var(--white, #FFF);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 130%;
+.cart-item__info-description .normal-medium {
+    color: $white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 140px;
 }
 
-.v-cart-item__info-description h4:last-child {
-    width: 65px;
-    text-align: right;
-}
-
-.v-cart-item__quantity {
+.cart-item__quantity {
     border-radius: 8px;
-    background-color: #2D303E;
+    background-color: $formBg;
     width: 48px;
     height: 48px;
     margin-right: 21px;
-
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 14px 14px 12px 14px;
-
     flex-shrink: 0;
-
-    color:#FFF;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 140%;
 }
 
-.v-cart-item__price {
-    color:#ABBBC2;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 140%; 
+.cart-item__total-price {
+    color: $white;
 }
 
-.v-cart-item__total-price {
-    color: #FFF;
-    text-align: right;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 140%;
-}
-
-.v-cart-item__info-note {
+.cart-item__note {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
 }
 
-.v-cart-item__info-note input {
+.cart-item__note-input {
     flex-grow: 2;
-    border-radius: 5px;
-    background-color: #2d303e;
     border: none;
     padding-left: 25px;
-    color: white;
-    height: 48px;
+    color: $white;
 }
 
-.v-cart-item__info-note input::placeholder {
-    font-family: 'Barlow'
-}
-
-.v-cart-item__info-note input:focus {
+.cart-item__note-input:focus {
     outline: none;
 } 
 
-.v-cart-item__info-note div {
+.cart-item__note-button-delete {
     width: 48px;
     height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    border: 1px solid #EA7C69;
+    border: 1px solid $primary;
     border-radius: 8px;
-
     cursor: pointer;
     transition: border-width 0.2s ease;
-
     margin-left: 17px;
-
 }
-.v-cart-item__info-note div:hover {
+.cart-item__note-button-delete:hover {
     border-width: 3px;
 }
 </style>

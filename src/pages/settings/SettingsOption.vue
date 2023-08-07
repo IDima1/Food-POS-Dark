@@ -1,15 +1,14 @@
 <template>
-    <div class="v-setting-option">
+    <div class="setting-option">
         <div
             v-for="(tab, index) in tabs"
             :key="index"
-            :class="['v-setting-option__content', { 'active-tab': index === activeTab }]"
-            @click="selectTab(index)"
-        >
-            <div class="v-setting-option__content-prop">
-                <img :src="tab.img" alt="">
-                <p class="textheader">{{ tab.header }}</p><br>
-                <p class="textdescr">{{ tab.description }}</p>
+            :class="['setting-option__content', { 'active-tab': index === activeTab }]"
+            @click="selectTab(index)">
+            <div class="setting-option__content-prop">
+                <img class="setting-option__content-img" :src="tab.img" alt="">
+                <p class="setting-option__content-text normal-medium">{{ tab.header }}</p><br>
+                <p class="setting-option__content-text small-regular">{{ tab.description }}</p>
             </div>
         </div>
   </div>
@@ -24,7 +23,7 @@ import SecurityIcon from '@/assets/icons/Appereance.svg';
 import About_UsIcon from '@/assets/icons/Restaurant.svg';
 
 export default {
-    name: 'v-setting-option',
+    name: 'SettingOption',
     data() {
         return {
             activeTab: 2,
@@ -76,83 +75,61 @@ export default {
 }
 </script>
 
-<style scoped>
-.v-setting-option {
-    grid-area: 2 / 2 / 3 / 3;
-    display: inline-flex;
-    min-height: 723px;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-shrink: 0;
-    margin-bottom: 24px;;
-    border-radius: 8px;
-    background-color:#1F1D2B;
-    position: relative;
-} 
+<style lang="sass" scoped>
+@import '@/styles/variables.sass'
+.setting-option 
+    grid-area: 2 / 2 / 3 / 3
+    display: inline-flex
+    min-height: 723px
+    flex-direction: column
+    align-items: flex-start
+    flex-shrink: 0
+    margin-bottom: 24px
+    border-radius: 8px
+    background-color: $darkBg2
+    position: relative
 
-.v-setting-option__content {
-    display: flex;
-    width: 275px;
-    padding: 24px 0px 24px 24px;
-    align-items: flex-end;
-    gap: 20px;
-    border-radius: 8px;
-}
+.setting-option__content 
+    display: flex
+    width: 275px
+    padding: 24px 0px 24px 24px
+    align-items: flex-end
+    gap: 20px
+    border-radius: 8px
 
-.v-setting-option__content .textheader, .textdescr {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-}
+.setting-option__content p
+    display: inline-flex
+    flex-direction: column
+    align-items: flex-start
+    gap: 4px
 
-.v-setting-option__content .textheader {
-    color: #FFF;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 130%;
-    margin: 0;
-}
+.small-regular 
+    color: #ABBBC2
+    padding-left: 24px
 
-.v-setting-option__content .textdescr {
-    color:#ABBBC2;
-    padding-left: 24px;
+.setting-option__content-img
+    width: 16px
+    height: 16px
+    flex-shrink: 0
+    margin-right: 8px
 
-    font-family: Barlow;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-}
+.setting-option__content:hover 
+    cursor: pointer
+    background-color:rgba(234, 124, 105, 0.26)
 
-.v-setting-option__content img {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    margin-right: 8px;
-}
+.setting-option__content.active-tab 
+    background-color: rgba(234, 124, 105, 0.26)
+    position: relative
 
-.v-setting-option__content:hover {
-    cursor: pointer;
-    background-color:rgba(234, 124, 105, 0.26);
-}
-
-.v-setting-option__content.active-tab {
-    background-color: rgba(234, 124, 105, 0.26);
-    position: relative;
-}
-
-.v-setting-option__content.active-tab::after {
-    content: "";
-    position: absolute;
-    top: auto;
-    right: 0;
-    height: 39px;
-    width: 4px;
-    border-radius: 16px;
-    background-color: #EA7C69;
-    z-index: 1;
-}
+.setting-option__content.active-tab::after 
+    content: ""
+    position: absolute
+    top: auto
+    right: 0
+    height: 39px
+    width: 4px
+    border-radius: 16px
+    background-color: $primary
+    z-index: 1
 
 </style>

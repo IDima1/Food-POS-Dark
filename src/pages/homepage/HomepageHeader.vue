@@ -1,23 +1,22 @@
 <template>
-    <div class="v-header">
-        <header>
-        <div class="v-header__main">
-            <div class="v-header__main_title">
-                <h1>Jaegar Resto</h1>
-                <p>Tuesday, 2 Feb 2021</p>
+    <div class="header">
+        <div class="header__main">
+            <div class="header__main-title">
+                <h1 class="header__title">Jaegar Resto</h1>
+                <p class="header__date large-regular">Tuesday, 2 Feb 2021</p>
             </div>
-            <div class="v-header__main_search_bar">
-                <input type="text" placeholder="Search for food, coffee, etc..">
-                <img src="@/assets/icons/Search.svg" alt="" >
+            <div class="header__main-search-bar">
+                <input class="header__main-search-bar-input" type="text" placeholder="Search for food, coffee, etc..">
+                <img class="header__main-search-bar-img" src="@/assets/icons/Search.svg" alt="" >
             </div>
         </div>
-        </header>
-        <div class="v-header__menu_slider">
+        <div class="header__menu-slider">
             <p
                 v-for="category in categories"
                 :key="category"
                 @click="selectCategory(category)"
                 :class="{ 'selected': selectedCategory === category, 'active': selectedCategory === category  }"
+                class="header__menu-catetory normal-semibold"
             >{{ category }}</p>
         </div>
     </div>
@@ -41,87 +40,58 @@ export default {
 }
 </script>
 
-<style scoped>
-.v-header{
-    padding-top: 24px;
-    grid-area: 1 / 2 / 2 / 3; 
-}
-.v-header__main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 65px;
-    color: white;
-    margin-bottom: 35px;
-}
+<style lang="sass" scoped>
+@import '@/styles/variables.sass'
+.header
+    padding-top: 24px
+    grid-area: 1 / 2 / 2 / 3
 
-input {
-    width: 220px;
-    height: 48px;
-    border-radius: 5px;
-    border: 1px solid #393c49;
-    background-color: #2d303e;
-    color: #abbbc2;
-    padding-left: 35px;
-}
+.header__main 
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 65px
+    margin-bottom: 35px
 
-input::placeholder {
-    color:#ABBBC2;
-    font-family: 'Barlow';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-}
-.v-header__main_search_bar {
-    position: relative;
-    display: flex;
-    align-items: center; 
-}
-.v-header__main_search_bar img {
-    position: absolute;
-    left: 10px;
-}
-.v-header__menu_slider {
-    display: flex;
-    align-items: center;
-    color: white;
 
-    border-bottom: 1px solid #393c49;
-    padding-bottom: 15px;
-}
-.v-header__menu_slider p {
-    cursor: pointer;
-    transition: color 0.2s ease;
-    margin-right: 32px;
+.header__main-search-bar 
+    position: relative
+    display: flex
+    align-items: center
 
-    & > p {
-        padding-right: 50px;
-    }
-}
+.header__main-search-bar-img
+    position: absolute
+    left: 10px
 
-.v-header__menu_slider p:hover {
-    color: #ea7c69;
-}
+.header__menu-slider 
+    display: flex
+    align-items: center
+    color: $white
 
-.v-header__menu_slider & > p {
-    padding-right: 50px;
-}
+    border-bottom: 1px solid $darkLine
+    padding-bottom: 15px
 
-.v-header__menu_slider p.selected {
-    color: #ea7c69;
-    position: relative;
-}
+.header__menu-catetory
+    cursor: pointer
+    transition: color 0.2s ease
+    margin-right: 32px
 
-.v-header__menu_slider p.selected::after {
-    content: "";
-    position: absolute;
-    bottom: -16px;
-    left: 0;
-    width: 37px;
-    height: 3px;
-    background-color: #ea7c69;
-    border-radius: 10px;
-}
+.header__menu-slider p:hover 
+    color: $primary
+
+
+.header__menu-slider p.selected 
+    color: $primary
+    position: relative
+
+.header__menu-slider p.selected::after 
+    content: ""
+    position: absolute
+    bottom: -16px
+    left: 0
+    width: 37px
+    height: 3px
+    background-color: $primary
+    border-radius: 10px
 
 </style>

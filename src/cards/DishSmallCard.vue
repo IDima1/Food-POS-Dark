@@ -1,10 +1,10 @@
 <template>
-    <div class = 'v-menu-dish' @click="addToCart">
-        <img class="v-menu-dish__image" :src="'../src/assets/dishes/' + dish_data.image" alt="img">
-        <div class='v-menu-dish__text'>
-            <h3 class ="v-menu-dish__name">{{ dish_data.name }}</h3>
-            <p class ="v-menu-dish__price">$ {{ dish_data.price }}</p>
-            <h4 class ="v-menu-dish__available"> {{ dish_data.available }} Bowls available</h4>
+    <div class = 'menu-dish-small-card' @click="addToCart">
+        <img class="menu-dish-small-card__image" :src="'../src/assets/dishes/' + dish_data.image" alt="img">
+        <div class='menu-dish-small-card__content'>
+            <p class ="menu-dish-small-card__name normal-medium">{{ dish_data.name }}</p>
+            <p class ="menu-dish-small-card__price normal-regular">$ {{ dish_data.price }}</p>
+            <p class ="menu-dish-small-card__available normal-regular"> {{ dish_data.available }} Bowls available</p>
         </div>
     </div>
 </template>
@@ -28,50 +28,32 @@ export default {
 }
 </script>
 
-<style scoped>
-.v-menu-dish {
-    width: 192px;
-    height: 226px;
-    background-color: #1F1D2B;
-    border-radius: 15px;
-    text-align: center;
+<style lang="sass" scoped>
+@import '@/styles/styles.sass'
+.menu-dish-small-card 
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    width: 192px
+    height: 226px
+    background-color: #1F1D2B
+    border-radius: 15px
+    text-align: center
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    position: relative
+    padding: 0 40px
+    padding-top: 120px
+    padding-bottom: 36px
+    font-size: 0.8em
+    cursor: pointer
 
-    position: relative;
-    padding: 0 40px;
-    padding-top: 120px;
-    padding-bottom: 36px;
-    font-size: 0.8em;
+.menu-dish-small-card__image 
+    border-radius: 50%
+    position: absolute
+    bottom: 125px
 
-    cursor: pointer;
-}
-
-.v-menu-dish__image {
-    border-radius: 50%;
-    position: absolute;
-    bottom: 125px;
-}
-
-.v-menu-dish__name {
-    color: #fff;
-    font-weight: 500;
-    line-height: 130%;
-}
-
-.v-menu-dish__price {
-    color: #fff;
-    font-weight: 400;
-    line-height: 140%;
-}
-
-.v-menu-dish__available {
-    color: #ABBBC2;
-    font-weight: 400;
-    line-height: 140%;
-}
+.menu-dish-small-card__available 
+    color: $textLight
 
 </style>

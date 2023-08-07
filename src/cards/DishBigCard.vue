@@ -1,15 +1,18 @@
 <template>
-    <div class="v-menu-dish-big-card" >
-        <img class="v-menu-dish-big-card__image" :src="'../src/assets/dishes/' + dish_data.image" alt="img">
-        <div class="v-menu-dish-big-card__text">
-            <h3 class="v-menu-dish-big-card__name">{{ dish_data.name }}</h3>
-            <div>
-                <p class="v-menu-dish-big-card__price">$ {{ dish_data.price }}</p>
-                <p>•</p>
-                <p class="v-menu-dish-big-card__available"> {{ dish_data.available }} Bowls </p>
+    <div class="menu-dish-big-card" >
+        <img class="menu-dish-big-card__image" :src="'../src/assets/dishes/' + dish_data.image" alt="img">
+        <div class="menu-dish-big-card__detail">
+            <p class="menu-dish-big-card__name normal-medium">{{ dish_data.name }}</p>
+            <div class="menu-dish-big-card__text-container">
+                <p class="menu-dish-big-card__price normal-medium">$ {{ dish_data.price }}</p>
+                <p class="menu-dish-big-card__spacer">•</p>
+                <p class="menu-dish-big-card__available normal-regular"> {{ dish_data.available }} Bowls </p>
             </div>  
         </div>
-        <button><img src="@/assets/icons/Edit.svg" alt=""><p>Edit dish</p></button>
+        <button class="menu-dish-big-card__button">
+            <img class="menu-dish-big-card__button-img" src="@/assets/icons/Edit.svg" alt="">
+            <p class="menu-dish-big-card__button-text">Edit dish</p>
+        </button>
     </div>
 </template>
 
@@ -27,92 +30,65 @@ export default {
 }
 </script>
 
-<style scoped>
-.v-menu-dish-big-card {
-    width: 221px;
-    height: 299px;
+<style lang="sass" scoped>
+@import '@/styles/styles.sass'
+.menu-dish-big-card 
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    text-align: center
+    width: 221px
+    height: 299px
+    border-radius: 8px
+    border:1px dashed $darkLine
+    background-color: $darkBg2
+    
+.menu-dish-big-card__image 
+    padding: 22px
+    border-radius: 50%
 
-    border-radius: 8px;
-    border:1px dashed#393C49;
-    background-color:#1F1D2B;
+.menu-dish-big-card__detail 
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 8px
 
-    text-align: center;
+.menu-dish-big-card__name 
+    width: 144px
+    color: $white
+    text-align: center
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
+.menu-dish-big-card__text-container
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    gap: 8px
+    padding-bottom: 16px
+    color:  $textLight
 
-.v-menu-dish-big-card__image {
-    padding: 22px;
-    border-radius: 50%;
-}
+.menu-dish-big-card__button
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 8px
+    width: 100%
+    height: 52px
+    border-radius: 0px 0px 8px 8px
+    opacity: 0.24
+    background: $primary
+    border: none
+    cursor: pointer
 
-.v-menu-dish-big-card__text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:8px;
-}
+.menu-dish-big-card__button-img
+    width: 20px
+    height: 20px
+    flex-shrink: 0
 
-.v-menu-dish-big-card__name {
-    width: 144px;
-    color: #FFF;
-    text-align: center;
-
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 130%;
-}
-
-.v-menu-dish-big-card__text div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-
-    color:  #ABBBC2;
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-    padding-bottom: 16px;
-}
-
-.v-menu-dish-big-card button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-
-    width: 100%;
-    height: 52px;
-    border-radius: 0px 0px 8px 8px;
-    opacity: 0.24;
-    background: #EA7C69;
-    border: none;
-
-    cursor: pointer;
-}
-
-.v-menu-dish-big-card button img {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-}
-
-.v-menu-dish-big-card button p {
-    color: #FFF;
-    font-family: Barlow;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 140%;
-    opacity: 100;
-}
+.menu-dish-big-card__button-text
+    color: $white
+    opacity: 100
 
 </style>
