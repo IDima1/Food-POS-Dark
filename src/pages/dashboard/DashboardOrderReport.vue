@@ -42,17 +42,8 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import orderReportData from '@/data/order-report.js';
-
-export default {
-    name: 'DashboardOrderReport',
-    data() {
-        return {
-            orderReportData: orderReportData,
-        }
-    }
-}
 </script>
 
 <style lang="sass" scoped>

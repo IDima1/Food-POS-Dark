@@ -26,54 +26,44 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import CoinIcon from '@/assets/icons/Coin.svg'
 import OrderIcon from '@/assets/icons/Order.svg'
 import CustomerIcon from '@/assets/icons/Customer.svg'
 import ArrowUpIcon from '@/assets/icons/Arrow-up-green.svg'
 import ArrowDownIcon from '@/assets/icons/Arrow-down-red.svg'
 
-export default {
-    name: 'DashboardOrderCard',
-    data() {
-        return {
-            cardDetails: [
-                {
-                icon: CoinIcon,
-                percentage: '+32.40%',
-                arrowUpIcon: ArrowUpIcon,
-                arrowDownIcon: ArrowDownIcon,
-                amount: '$10,243.00',
-                description: 'Total Revenue',
-                },
-                {
-                icon: OrderIcon,
-                percentage: '-12.40%',
-                arrowUpIcon: ArrowUpIcon,
-                arrowDownIcon: ArrowDownIcon,
-                amount: '23,456',
-                description: 'Total Dish Ordered',
-                },
-                {
-                icon: CustomerIcon,
-                percentage: '+2.40%',
-                arrowUpIcon: ArrowUpIcon,
-                arrowDownIcon: ArrowDownIcon,
-                amount: '1,234',
-                description: 'Total Customer',
-                },
-            ],
-        };
+const cardDetails = [
+    {
+        icon: CoinIcon,
+        percentage: '+32.40%',
+        arrowUpIcon: ArrowUpIcon,
+        arrowDownIcon: ArrowDownIcon,
+        amount: '$10,243.00',
+        description: 'Total Revenue',
     },
-    computed: {
-        getPositivePercentage() {
-            return this.cardDetails.map((card) => ({
-            ...card,
-            positivePercentage: parseFloat(card.percentage) >= 0,
-            }));
-        },
+    {
+        icon: OrderIcon,
+        percentage: '-12.40%',
+        arrowUpIcon: ArrowUpIcon,
+        arrowDownIcon: ArrowDownIcon,
+        amount: '23,456',
+        description: 'Total Dish Ordered',
     },
-}
+    {
+        icon: CustomerIcon,
+        percentage: '+2.40%',
+        arrowUpIcon: ArrowUpIcon,
+        arrowDownIcon: ArrowDownIcon,
+        amount: '1,234',
+        description: 'Total Customer',
+    },
+];
+
+const getPositivePercentage = cardDetails.map((card) => ({
+    ...card,
+    positivePercentage: parseFloat(card.percentage) >= 0,
+    }));
 </script>
 
 <style lang="sass" scoped>

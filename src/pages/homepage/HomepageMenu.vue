@@ -21,30 +21,31 @@
     </div>
 </template>
   
-<script>
+<script setup>
 import DishSmallCard from "@/cards/DishSmallCard.vue";
-import { defineComponent } from "vue";
 import { useStore } from "@/pinia/pinia.js";
   
-export default defineComponent({
+const store = useStore();
+const dishes = store.DISHES;
+
+const addToCart = (data) => {
+    store.ADD_TO_CART(data);
+};
+</script>
+
+<script>
+export default {
     name: "HomepageMenu",
     components: {
-      DishSmallCard,
+        DishSmallCard,
     },
     setup() {
-        const store = useStore();
-        const dishes = store.DISHES;
-    
-        const addToCart = (data) => {
-            store.ADD_TO_CART(data);
-        };
-    
         return {
             dishes,
             addToCart,
         };
-    },
-});
+    }
+}
 </script>
 
 <style lang="sass" scoped>

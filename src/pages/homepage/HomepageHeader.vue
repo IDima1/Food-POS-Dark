@@ -22,22 +22,15 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: "HomepageHeader",
-    data() {
-        return {
-            selectedCategory: 'Hot Dishes',
-            categories: ['Hot Dishes', 'Cold Dishes', 'Soup', 'Grill', 'Appetizer', 'Dessert']
-        };
-    },
-    methods: {
-        selectCategory(category) {
-            this.selectedCategory = category;
-            console.log("Selected Category:", category);
-        },
-    },
-}
+<script setup>
+import { ref } from 'vue'
+
+const selectedCategory =  ref('Hot Dishes');
+const categories = ['Hot Dishes', 'Cold Dishes', 'Soup', 'Grill', 'Appetizer', 'Dessert'];
+const selectCategory = (category) => {
+    selectedCategory.value = category;
+    console.log("Selected Category:", category);
+};
 </script>
 
 <style lang="sass" scoped>
@@ -52,7 +45,6 @@ export default {
     align-items: center
     height: 65px
     margin-bottom: 35px
-
 
 .header__main-search-bar 
     position: relative
@@ -78,7 +70,6 @@ export default {
 
 .header__menu-slider p:hover 
     color: $primary
-
 
 .header__menu-slider p.selected 
     color: $primary

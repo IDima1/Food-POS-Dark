@@ -84,36 +84,37 @@
     </div>
 </template>
 
-<script>
-import { defineComponent, ref } from 'vue';
+<script setup>
+import { ref } from 'vue';
 import { useStore } from '@/pinia/pinia.js';
 
-export default defineComponent({
-    name: "Payment",
+const store = useStore();
+const selectedPaymentMethod = ref(null);
+
+const selectPaymentMethod = (method) => {
+    selectedPaymentMethod.value = method;
+};
+
+const closePayment = () => {
+    store.CLOSE_PAYMENT();
+};
+
+const confirmPayment = () => {
+    console.log("Payment was successful");
+};
+</script>
+
+<script>
+export default {
     setup() {
-        const store = useStore();
-        const selectedPaymentMethod = ref(null);
-
-        const selectPaymentMethod = (method) => {
-            selectedPaymentMethod.value = method;
-        };
-
-        const closePayment = () => {
-            store.CLOSE_PAYMENT();
-        };
-
-        const confirmPayment = () => {
-            console.log("Payment was successful");
-        };
-
         return {
-            selectedPaymentMethod,
-            selectPaymentMethod,
-            closePayment,
-            confirmPayment,
+        selectedPaymentMethod,
+        selectPaymentMethod,
+        closePayment,
+        confirmPayment,
         };
     },
-});
+};
 </script>
 
 <style lang="sass" scoped>

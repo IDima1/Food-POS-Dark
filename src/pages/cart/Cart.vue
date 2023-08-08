@@ -63,7 +63,7 @@
                 <button class="cart__order-payment" 
                     @click="showPayment = true" 
                     v-if="!showPayment">
-                    <p class="normal-semibold">Continue To Payment</p>
+                    <p class="cart__order-payment-button-text normal-semibold">Continue To Payment</p>
                 </button>
             </div>
             <div class="cart__payment">
@@ -75,76 +75,61 @@
         </div>
         <div class="cart-overlay" :class="{ 'show-overlay': showPayment }"></div>
     </div>
-  </template>
+</template>
   
-<script>
+<script setup>
 import CartItem from "@/pages/cart/CartItem.vue";
 import ThePayment from "@/common/ThePayment.vue";
-import { defineComponent, computed, ref } from "vue";
+import { defineEmits, defineProps, computed, ref } from "vue";
 import { useStore } from "@/pinia/pinia.js";
-  
-export default defineComponent({
-    name: "Cart",
+
+const store = useStore();
+const props = defineProps(['cart_data']);
+const cartItems = props.cart_data;
+const categories = ["Dine In", "To Go", "Delivery"];
+const selectedCategory = ref("Dine In");
+
+const showPayment = computed({
+    get: () => store.SHOW_PAYMENT,
+    set: (value) => store.OPEN_PAYMENT(value),
+});
+
+const calculateSubTotal = () => {
+    let subtotal = 0;
+    cartItems.forEach((item) => {
+        subtotal += item.price * item.quantity;
+    });
+    return `$ ${subtotal.toFixed(2)}`;
+};
+
+const deleteFromCart = (index) => {
+    store.DELETE_FROM_CART(index);
+};
+
+const selectCategory = (category) => {
+    selectedCategory.value = category;
+    console.log("Selected category:", category);
+};
+
+const showPaymentModal = () => {
+    store.OPEN_PAYMENT();
+};
+
+const closePaymentModal = () => {
+    store.CLOSE_PAYMENT();
+};
+
+const emit = defineEmits();
+
+</script>
+
+<script>
+export default {
     components: {
         CartItem,
         ThePayment,
-    },
-    props: {
-        cart_data: {
-            type: Array,
-            default() {
-                return [];
-            },
-        },
-    },
-    setup(props) {
-        const store = useStore();
-        const categories = ["Dine In", "To Go", "Delivery"];
-        const selectedCategory = ref("Dine In");
-        
-        const showPayment = computed({
-            get: () => store.SHOW_PAYMENT,
-            set: (value) => store.OPEN_PAYMENT(value),
-        });
-
-        const calculateSubTotal = () => {
-            let subtotal = 0;
-            props.cart_data.forEach((item) => {
-                subtotal += item.price * item.quantity;
-            });
-            return `$ ${subtotal.toFixed(2)}`;
-        };
-        
-        const deleteFromCart = (index) => {
-            store.DELETE_FROM_CART(index);
-        };
-
-        const selectCategory = (category) => {
-            selectedCategory.value = category;
-            console.log("Selected category:", category);
-        };
-
-        const showPaymentModal = () => {
-            store.OPEN_PAYMENT();
-        };
-
-        const closePaymentModal = () => {
-            store.CLOSE_PAYMENT();
-        };
-
-        return {
-            categories,
-            selectedCategory,
-            showPayment,
-            calculateSubTotal,
-            deleteFromCart,
-            selectCategory,
-            cartItems: props.cart_data,
-            showPaymentModal,
-            closePaymentModal,
-        };
-    },
-});
+    }
+}
 </script>
   
 <style lang="sass" scoped>

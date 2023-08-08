@@ -16,18 +16,8 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'DishBigCard',
-    props: {
-        dish_data: {
-            type: Object,
-            default() {
-                return {}
-            }
-        }
-    }
-}
+<script setup>
+const { dish_data = {} } = defineProps(['dish_data']);
 </script>
 
 <style lang="sass" scoped>

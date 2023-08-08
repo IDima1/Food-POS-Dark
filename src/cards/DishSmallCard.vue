@@ -9,23 +9,15 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'DishSmallCard',
-    props: {
-        dish_data: {
-            type: Object,
-            default() {
-                return {}
-            }
-        }
-    },
-    methods: {
-        addToCart(){
-            this.$emit('addToCart',this.dish_data)
-        }
-    }
-}
+<script setup>
+import { ref, defineProps, defineEmits } from 'vue';
+
+const { dish_data = {} } = defineProps(['dish_data']);
+const emit = defineEmits();
+
+const addToCart = () => {
+    emit('addToCart', dish_data);
+};
 </script>
 
 <style lang="sass" scoped>

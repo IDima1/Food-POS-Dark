@@ -6,14 +6,18 @@
     </div>
   </template>
   
-<script>
+<script setup>
 import HomepageHeader from "@/pages/homepage/HomepageHeader.vue";
 import HomepageMenu from "@/pages/homepage/HomepageMenu.vue";
 import Cart from "@/pages/cart/Cart.vue";
-import { defineComponent } from "vue";
 import { useStore } from "@/pinia/pinia.js";
   
-export default defineComponent({
+const store = useStore();
+const cart = store.CART;
+</script>
+
+<script>
+export default {
     name: "Homepage",
     components: {
         HomepageHeader,
@@ -21,14 +25,11 @@ export default defineComponent({
         Cart,
     },
     setup() {
-        const store = useStore();
-        const cart = store.CART;
-
         return {
             cart,
         };
     },
-});
+};
 </script>
 
 <style lang="sass" scoped>

@@ -14,7 +14,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
 import AppereanceIcon from '@/assets/icons/Appereance.svg';
 import RestaurantIcon from '@/assets/icons/Restaurant.svg';
 import DiscountIcon from '@/assets/icons/Appereance.svg';
@@ -22,56 +23,48 @@ import NotificationIcon from '@/assets/icons/Restaurant.svg';
 import SecurityIcon from '@/assets/icons/Appereance.svg';
 import About_UsIcon from '@/assets/icons/Restaurant.svg';
 
-export default {
-    name: 'SettingOption',
-    data() {
-        return {
-            activeTab: 2,
-            tabs: [
-                {
-                    header: 'Appearence',
-                    description: 'Dark and Light mode, Font size',
-                    img: AppereanceIcon,
-                },
-                {
-                    header: 'Your Restaurant',
-                    description: 'Dark and Light mode, Font size',
-                    img: RestaurantIcon,
-                },
-                {
-                    header: 'Products Management',
-                    description: 'Manage your product, pricing, etc',
-                    img: DiscountIcon,
-                },
-                {
-                    header: 'Notifications',
-                    description: 'Customize your notifications',
-                    img: NotificationIcon,
-                },
-                {
-                    header: 'Security',
-                    description: 'Configure Password, PIN, etc',
-                    img: SecurityIcon,
-                },
-                {
-                    header: 'Security',
-                    description: 'Configure Password, PIN, etc',
-                    img: SecurityIcon,
-                },
-                {
-                    header: 'About Us',
-                    description: 'Find out more about Posly',
-                    img: About_UsIcon,
-                },
-            ]
-        }
+const activeTab = ref(2);
+const tabs = [
+    {
+        header: 'Appearence',
+        description: 'Dark and Light mode, Font size',
+        img: AppereanceIcon,
     },
-    methods: {
-        selectTab(index){
-            console.log('Selected Tab:', index);
-            this.activeTab = index;
-        }
-    }
+    {
+        header: 'Your Restaurant',
+        description: 'Dark and Light mode, Font size',
+        img: RestaurantIcon,
+    },
+    {
+        header: 'Products Management',
+        description: 'Manage your product, pricing, etc',
+        img: DiscountIcon,
+    },
+    {
+        header: 'Notifications',
+        description: 'Customize your notifications',
+        img: NotificationIcon,
+    },
+    {
+        header: 'Security',
+        description: 'Configure Password, PIN, etc',
+        img: SecurityIcon,
+    },
+    {
+        header: 'Security',
+        description: 'Configure Password, PIN, etc',
+        img: SecurityIcon,
+    },
+    {
+        header: 'About Us',
+        description: 'Find out more about Posly',
+        img: About_UsIcon,
+    },
+];
+
+const selectTab = (index) => {
+    activeTab.value = index;
+    console.log('Selected Tab:', index);
 }
 </script>
 

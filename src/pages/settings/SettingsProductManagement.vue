@@ -56,45 +56,45 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import DishBigCard from "@/cards/DishBigCard.vue";
-import { defineComponent, ref } from "vue";
+import { ref } from "vue";
 import { useStore } from "@/pinia/pinia.js";
 
-export default defineComponent({
+const store = useStore();
+const dishes = store.DISHES;
+
+const selectedCategory = ref("Hot Dishes");
+const categories = ["Hot Dishes", "Cold Dishes", "Soup", "Grill", "Appetizer", "Dessert"];
+
+const selectCategory = (category) => {
+    selectedCategory.value = category;
+    console.log("Selected Category:", category);
+};
+
+const onCategories = () => {
+    console.log("Manage Categories button push");
+};
+
+const addNewDish = () => {
+    console.log("Calling up the context menu for adding a dish");
+};
+
+const discardChanges = () => {
+    console.log("Changes was discarded");
+};
+
+const saveChanges = () => {
+    console.log("Changes was saved");
+};
+</script>
+
+<script>
+export default {
     name: "SettingsProductManagement",
-    components: {
+    components:
         DishBigCard,
-    },
     setup() {
-        const store = useStore();
-        const dishes = store.DISHES;
-
-        const selectedCategory = ref("Hot Dishes");
-
-        const categories = ["Hot Dishes", "Cold Dishes", "Soup", "Grill", "Appetizer", "Dessert"];
-
-        const selectCategory = (category) => {
-            selectedCategory.value = category;
-            console.log("Selected Category:", category);
-        };
-
-        const onCategories = () => {
-            console.log("Manage Categories button push");
-        };
-
-        const addNewDish = () => {
-            console.log("Calling up the context menu for adding a dish");
-        };
-
-        const discardChanges = () => {
-            console.log("Changes was discarded");
-        };
-
-        const saveChanges = () => {
-            console.log("Changes was saved");
-        };
-
         return {
             dishes,
             selectedCategory,
@@ -106,7 +106,7 @@ export default defineComponent({
             saveChanges,
         };
     },
-});
+}
 </script>
 
 <style lang="sass" scoped>

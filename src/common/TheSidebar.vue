@@ -5,37 +5,37 @@
         </div>
         <div class="sidebar__menu">
             <div class="sidebar__menu-item"
-                :class="{ 'active-item': isActive('/') }"
+                :class="{ 'active-item': $route.path === '/' }"
                 @click="$router.push('/')">
                 <img class="sidebar__menu-img" src="@/assets/icons/Home.svg" alt=""/>
             </div>
             <div class="sidebar__menu-item"
-                :class="{ 'active-item': isActive('/discount') }"
+                :class="{ 'active-item': $route.path === '/discount' }"
                 @click="showAlert">
                 <img class="sidebar__menu-img" src="@/assets/icons/Discount.svg" alt=""/>
             </div>
             <div class="sidebar__menu-item"
-                :class="{ 'active-item': isActive('/dashboard') }"
+                :class="{ 'active-item': $route.path === '/dashboard' }"
                 @click="$router.push('/dashboard')">
                 <img class="sidebar__menu-img" src="@/assets/icons/Dashboard.svg" alt=""/>
             </div>
             <div class="sidebar__menu-item"
-                :class="{ 'active-item': isActive('/messages') }"
+                :class="{ 'active-item': $route.path === '/message' }"
                 @click="showAlert">
                 <img class="sidebar__menu-img" src="@/assets/icons/Message.svg" alt=""/>
             </div>
             <div class="sidebar__menu-item"
-                :class="{ 'active-item': isActive('/notifications') }"
+                :class="{ 'active-item': $route.path === '/notification' }"
                 @click="showAlert">
                 <img class="sidebar__menu-img" src="@/assets/icons/Notification.svg" alt=""/>
             </div>
             <div class="sidebar__menu-item"
-                :class="{ 'active-item': isActive('/settings') }"
+                :class="{ 'active-item': $route.path === '/settings' }"
                 @click="$router.push('/settings')">
                 <img class="sidebar__menu-img" src="@/assets/icons/Setting.svg" alt=""/>
             </div>
             <div class="sidebar__menu-logout"
-                :class="{ 'active-item': isActive('/payment') }"
+                :class="{ 'active-item': $route.path === '/log-out' }"
                 @click="showAlert">
                 <img class="sidebar__menu-img" src="@/assets/icons/Log Out.svg" alt=""/>
             </div>
@@ -43,22 +43,14 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: "TheSidebar",
-    data() {
-        return {
-            activeItem: null
-        }
-    },
-    methods: {
-        showAlert() {
-            alert('Under construction');
-        },
-        isActive(route) {
-            return this.$route.path === route;
-        },
-    }
+<script setup>
+import { ref } from 'vue';
+import { useRoute, useRouter} from 'vue-router';
+
+const $route = useRoute();
+const $router = useRouter();
+const showAlert = () => {
+    alert('Under construction');
 }
 </script>
 

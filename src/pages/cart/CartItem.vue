@@ -4,8 +4,8 @@
             <div class="cart-item__info-description">
                 <img class="cart-item__info-image" v-bind:src="'../src/assets/dishes/' + cart_item_data.image" alt="img"/>
                 <div class="cart-item__info-description__name-price">
-                    <p class="cart-item__info-name normal-medium">{{ dish.name }}</p>
-                    <p class="cart-item__info-price small-medium"> $ {{ dish.price }}</p>
+                    <p class="cart-item__info-name normal-medium">{{ cartItem.name }}</p>
+                    <p class="cart-item__info-price small-medium"> $ {{ cartItem.price }}</p>
                 </div>
                 <div class="cart-item__quantity">
                     <p class="cart-item__quantity-text large-medium">{{ cartItem.quantity }}</p>
@@ -22,40 +22,35 @@
     </div>
 </template>
   
-<script>
-import { defineComponent } from 'vue';
+<script setup>
+import { defineProps, ref, computed} from 'vue';
 import { useStore } from '@/pinia/pinia.js';
 
-export default defineComponent({
+const props = defineProps(['cart_item_data']);
+const store = useStore();
+const cartItem = computed(() => store.CART.find((item) => item.article === props.cart_item_data.article));
+
+const calculateTotalPrice = () => {
+    return (cartItem.value.price * cartItem.value.quantity).toFixed(2);
+};
+
+const deleteFromCart = () => {
+    store.DELETE_FROM_CART(store.CART.indexOf(cartItem.value));
+};
+</script>
+
+<script>
+export default {
     name: 'CartItem',
-    props: {
-        cart_item_data: {
-            type: Object,
-            default() {
-                return {};
-            },
-        },
-    },
-    setup(props) {
-        const store = useStore();
-        const cartItem = store.CART.find((item) => item.article === props.cart_item_data.article);
-
-        const calculateTotalPrice = () => {
-            return (cartItem.price * cartItem.quantity).toFixed(2);
-        };
-
-        const deleteFromCart = () => {
-            store.DELETE_FROM_CART(store.CART.indexOf(cartItem));
-        };
-
+    setup() {
         return {
-            dish: cartItem,
+            dish: cartItem.value,
             cartItem,
             calculateTotalPrice,
             deleteFromCart,
         };
     },
-});
+}
 </script>
 
 <style lang="scss" scoped>

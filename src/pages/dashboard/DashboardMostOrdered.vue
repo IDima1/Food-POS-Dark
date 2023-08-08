@@ -31,37 +31,30 @@
     </div>
 </template>
 
-<script>
-import DumplingImg from '@/assets/dishes/dumpling.svg'
-export default {
-    name: 'DashboardMostOrdered',
-    data() {
-        return {
-            menuItems: [
-                {
-                name: 'Spicy seasoned seafood noodles',
-                image: DumplingImg,
-                ordered: 200,
-                },
-                {
-                name: 'Salted pasta with mushroom sauce',
-                image: DumplingImg,
-                ordered: 120,
-                },
-                {
-                name: 'Beef dumpling in hot and sour soup',
-                image: DumplingImg,
-                ordered: 80,
-                },
-            ],
-        };
-  },
-    methods: {
-        onViewAll(){
-            console.log('View All')
-        }
-    }
-}
+<script setup>
+import DumplingImg from '@/assets/dishes/dumpling.svg';
+
+const menuItems = [
+    {
+        name: 'Spicy seasoned seafood noodles',
+        image: DumplingImg,
+        ordered: 200,
+    },
+    {
+        name: 'Salted pasta with mushroom sauce',
+        image: DumplingImg,
+        ordered: 120,
+    },
+    {
+        name: 'Beef dumpling in hot and sour soup',
+        image: DumplingImg,
+        ordered: 80,
+    },
+];
+
+const onViewAll = () => {
+    console.log('View all most ordered dishes')
+};
 </script>
 
 <style lang="sass" scoped>
