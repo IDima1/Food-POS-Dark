@@ -14,10 +14,10 @@
             <div class="dashboard-most-type-of-order__header-devider"></div>
         </div>
         <div class="dashboard-most-type-of-order__content">
-            <div class="dashboard-most-type-of-order__content">
-                <img src="@/assets/Circle.svg" alt="">
+            <div class="dashboard-most-type-of-order__content-chart">
+                
+                <TheChart/>
             </div>
-
             <div class="dashboard-most-type-of-order__content-cells">
                 <div class="dashboard-most-type-of-order__content-cells-cell">
                     <img class="dashboard-most-type-of-order__content-img" src="@/assets/icons/Ellipse-pink.svg" alt="">
@@ -47,8 +47,12 @@
     </div>
 </template>
 <script>
+import TheChart from '../../common/TheChart.vue';
 export default {
-    name: 'DashboardMostTypeOfOrder'
+    name: 'DashboardMostTypeOfOrder',
+    components: {
+        TheChart
+    }
 }
 </script>
 
@@ -57,12 +61,11 @@ export default {
 
 .dashboard-most-type-of-order
     display: flex
-    padding: 24px 0px 40px 0px
+    padding: 24px 24px 40px 24px
     flex-direction: column
     justify-content: center
     align-items: center
     gap: 32px
-    width: 100%
     border-radius: 8px
     background: $darkBg2
 

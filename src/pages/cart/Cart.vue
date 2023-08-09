@@ -305,8 +305,8 @@ export default {
         z-index: 98
         display: none
 
-    // .cart-container.show-payment + .cart-overlay 
-    //     display: block
+    .cart-container.show-payment, .cart-overlay 
+        display: block
 
     .cart__content-empty-message-text
         color: $white

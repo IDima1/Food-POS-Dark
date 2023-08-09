@@ -25,7 +25,6 @@ export default {
 
 .app {
     font-family: "Barlow", sans-serif;
-    display: flex;
 }
 
 body {
