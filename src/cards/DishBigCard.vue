@@ -22,6 +22,7 @@ const { dish_data = {} } = defineProps(['dish_data']);
 
 <style lang="sass" scoped>
 @import '@/styles/styles.sass'
+
 .menu-dish-big-card 
     display: flex
     flex-direction: column
@@ -31,54 +32,54 @@ const { dish_data = {} } = defineProps(['dish_data']);
     width: 221px
     height: 299px
     border-radius: 8px
-    border:1px dashed $darkLine
+    border: 1px dashed $darkLine
     background-color: $darkBg2
     
-.menu-dish-big-card__image 
-    padding: 22px
-    border-radius: 50%
+    &__image 
+        padding: 22px
+        border-radius: 50%
 
-.menu-dish-big-card__detail 
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    gap: 8px
+    &__detail 
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        gap: 8px
 
-.menu-dish-big-card__name 
-    width: 144px
-    color: $white
-    text-align: center
+    &__name 
+        width: 144px
+        color: $white
+        text-align: center
 
-.menu-dish-big-card__text-container
-    display: flex
-    justify-content: center
-    align-items: center
-    text-align: center
-    gap: 8px
-    padding-bottom: 16px
-    color:  $textLight
+    &__text-container
+        display: flex
+        justify-content: center
+        align-items: center
+        text-align: center
+        gap: 8px
+        padding-bottom: 16px
+        color:  $textLight
 
-.menu-dish-big-card__button
-    display: flex
-    justify-content: center
-    align-items: center
-    gap: 8px
-    width: 100%
-    height: 52px
-    border-radius: 0px 0px 8px 8px
-    opacity: 0.24
-    background: $primary
-    border: none
-    cursor: pointer
+    &__button
+        display: flex
+        justify-content: center
+        align-items: center
+        gap: 8px
+        width: 100%
+        height: 52px
+        border-radius: 0px 0px 8px 8px
+        opacity: 0.24
+        background: $primary
+        border: none
+        cursor: pointer
 
-.menu-dish-big-card__button-img
-    width: 20px
-    height: 20px
-    flex-shrink: 0
+        &-img
+            width: 20px
+            height: 20px
+            flex-shrink: 0
 
-.menu-dish-big-card__button-text
-    color: $white
-    opacity: 100
+        &-text
+            color: $white
+            opacity: 100
 
 </style>

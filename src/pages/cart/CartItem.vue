@@ -53,91 +53,80 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import '@/styles/variables.sass';
-.cart-item {
-    margin-top: 24px;
-    height: 106px;
-}
+<style lang="sass" scoped>
+@import '@/styles/variables.sass'
 
-.cart-item__info-description {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: $white;
-}
+.cart-item 
+    margin-top: 24px
+    height: 106px
 
-.cart-item__info-description__name-price {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 51px;
-    flex-grow: 2;
-}
+    &__info-description 
+        display: flex
+        justify-content: space-between
+        align-items: center
+        color: $white
 
-.cart-item__info-image {
-    width: 40px;
-    height: 40px;
-    margin-right: 15px;
-    border-radius: 50%;
-    margin-right: 7px;
-}
+        &__name-price
+            display: flex
+            flex-direction: column
+            justify-content: center
+            width: 51px
+            flex-grow: 2
 
-.cart-item__info-description .normal-medium {
-    color: $white;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 140px;
-}
+    &__info-image 
+        width: 40px
+        height: 40px
+        margin-right: 7px
+        border-radius: 50%
 
-.cart-item__quantity {
-    border-radius: 8px;
-    background-color: $formBg;
-    width: 48px;
-    height: 48px;
-    margin-right: 21px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 14px 14px 12px 14px;
-    flex-shrink: 0;
-}
+    &__info-description .normal-medium 
+        color: $white
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+        max-width: 140px
 
-.cart-item__total-price {
-    color: $white;
-}
+    &__quantity 
+        border-radius: 8px
+        background-color: $formBg
+        width: 48px
+        height: 48px
+        margin-right: 21px
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 14px 14px 12px 14px
+        flex-shrink: 0
 
-.cart-item__note {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
+    &__total-price 
+        color: $white
 
-.cart-item__note-input {
-    flex-grow: 2;
-    border: none;
-    padding-left: 25px;
-    color: $white;
-}
+    &__note 
+        display: flex
+        justify-content: space-between
+        margin-top: 10px
 
-.cart-item__note-input:focus {
-    outline: none;
-} 
+        &-input 
+            flex-grow: 2
+            border: none
+            padding-left: 25px
+            color: $white
 
-.cart-item__note-button-delete {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid $primary;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: border-width 0.2s ease;
-    margin-left: 17px;
-}
-.cart-item__note-button-delete:hover {
-    border-width: 3px;
-}
+            &:focus
+                outline: none
+
+        &-button-delete
+            width: 48px
+            height: 48px
+            display: flex
+            justify-content: center
+            align-items: center
+            border: 1px solid $primary
+            border-radius: 8px
+            cursor: pointer
+            transition: border-width 0.2s ease
+            margin-left: 17px
+
+            &:hover
+                border-width: 3px
 </style>

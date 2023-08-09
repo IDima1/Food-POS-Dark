@@ -130,161 +130,162 @@ export default {
     width: 405px
     height: 100vh
     border-left: 1px solid $darkLine
-.payment__content 
-    display: flex
-    flex-direction: column
-    align-items: flex-start
-    gap: 24px
 
-.payment__wrapper 
-    position: relative
-    display: flex
-    flex-direction: column
-    flex-grow: 1
-    overflow-y: auto
-    min-height: 300px
+    &__content 
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 24px
 
-.payment__content-header 
-    display: flex
-    flex-direction: column
-    justify-content: center
-    text-align: left
-    width: 100%
-    gap: 8px
-    padding-top: 36px
+    &__wrapper 
+        position: relative
+        display: flex
+        flex-direction: column
+        flex-grow: 1
+        overflow-y: auto
+        min-height: 300px
 
-.payment__content-header-subtitle
-    color: #ABBBC2
+    &__content-header 
+        display: flex
+        flex-direction: column
+        justify-content: center
+        text-align: left
+        width: 100%
+        gap: 8px
+        padding-top: 40px
 
-.payment__content-devider 
-    border: 1px solid $darkLine
-    width: 100%
+        &-subtitle
+            color: $textLight
 
-.payment__content-payment-method 
-    display: inline-flex
-    flex-direction: column
-    align-items: flex-start
-    gap: 16px
+    &__content-devider 
+        border: 1px solid $darkLine
+        width: 100%
 
-.payment__content-payment-method-tabs 
-    display: flex
-    align-items: flex-start
-    gap: 8px
+    &__content-payment-method 
+        display: inline-flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 16px
 
-.payment__content-payment-method-tab 
-    display: flex
-    width: 101px
-    height: 64px
-    padding: 10px 16px
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    gap: 2px
-    border-radius: 8px
-    border: 1px solid $darkLine
-    background: none
-    cursor: pointer
-    color: $white
-    white-space: nowrap
+        &-tabs 
+            display: flex
+            align-items: flex-start
+            gap: 8px
 
-.payment__content-payment-method-tab.selected 
-    border: 1px solid $textLight
-    background: $darkBg1
-    position: relative
+        &-tab 
+            display: flex
+            width: 101px
+            height: 64px
+            padding: 10px 16px
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            gap: 2px
+            border-radius: 8px
+            border: 1px solid $darkLine
+            background: none
+            cursor: pointer
+            color: $white
+            white-space: nowrap
 
-.payment__content-payment-method-tab.selected::after 
-    content: url('@/assets/icons/Mask.svg')
-    position: absolute
-    top: 6px
-    right: 6px
-    width: 13px
-    height: 13px
-    border-radius: 50%
-    display: flex
-    justify-content: center
-    align-items: center
+            &.selected 
+                border: 1px solid $textLight
+                background: $darkBg1
+                position: relative
 
-.payment__content-payment-method-forms 
-    display: flex
-    flex-direction: column
-    align-items: flex-start
+                &::after 
+                    content: url('@/assets/icons/Mask.svg')
+                    position: absolute
+                    top: 6px
+                    right: 6px
+                    width: 13px
+                    height: 13px
+                    border-radius: 50%
+                    display: flex
+                    justify-content: center
+                    align-items: center
 
-.payment__content-payment-method-forms-input-name
-    display: flex
-    width: 357px
-    padding: 14px
-    align-items: flex-start
-    gap: 8px
-    margin: 8px 0px 16px 0px
-    border-radius: 8px
+    &__content-payment-method-forms 
+        display: flex
+        flex-direction: column
+        align-items: flex-start
 
-.payment__content-payment-method-forms-data-cvv
-    display: inline-flex
-    align-items: flex-start
-    gap: 13px
+        &-input-name
+            display: flex
+            width: 357px
+            padding: 14px
+            align-items: flex-start
+            gap: 8px
+            margin: 8px 0px 16px 0px
+            border-radius: 8px
 
-.payment__content-payment-method-forms-input-data-cvv
-    display: flex
-    align-items: flex-start
-    width: 172px
-    padding: 14px
-    gap: 8px
-    margin-top: 8px
-    border-radius: 8px
+        &-data-cvv
+            display: inline-flex
+            align-items: flex-start
+            gap: 13px
 
-.payment__payment-method-devider 
-    border: 1px solid $darkLine
-    width: 100%
+        &-input-data-cvv
+            display: flex
+            align-items: flex-start
+            width: 172px
+            padding: 14px
+            gap: 8px
+            margin-top: 8px
+            border-radius: 8px
 
-.payment__payment-method-form 
-    display: flex
-    align-items: flex-start
-    gap: 13px
+    &__payment-method-devider 
+        border: 1px solid $darkLine
+        width: 100%
 
-.payment__payment-method-form-select
-    display: flex
-    width: 172px
-    margin-top: 10px
-    padding-left: 44px
-    background-color: $formBg
+    &__payment-method-form 
+        display: flex
+        align-items: flex-start
+        gap: 13px
 
-.payment__content-payment-method-forms-input
-    display: flex
-    align-items: flex-start
-    width: 172px
-    padding: 14px
-    gap: 8px
-    margin-top: 10px
-    border-radius: 8px
+    &__payment-method-form-select
+        display: flex
+        width: 172px
+        margin-top: 10px
+        padding-left: 44px
+        background-color: $formBg
 
-.payment__buttons 
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
-    display: flex
-    justify-content: center
-    gap: 8px
+    &__content-payment-method-forms-input
+        display: flex
+        align-items: flex-start
+        width: 172px
+        padding: 14px
+        gap: 8px
+        margin-top: 10px
+        border-radius: 8px
 
-.payment__buttons-cancel, .payment__buttons-confirm 
-    display: flex
-    width: 175px
-    padding: 14px
-    justify-content: center
-    align-items: center
-    gap: 8px
-    flex: 1
-    border-radius: 8px
-    border: 1px solid $primary
-    background-color: transparent
-    cursor: pointer
+    &__buttons 
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        display: flex
+        justify-content: center
+        gap: 8px
 
-.payment__buttons-confirm 
-    background: $primary
-    box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.40)
-    color: $base
+        &-cancel, &-confirm 
+            display: flex
+            width: 175px
+            padding: 14px
+            justify-content: center
+            align-items: center
+            gap: 8px
+            flex: 1
+            border-radius: 8px
+            border: 1px solid $primary
+            background-color: transparent
+            cursor: pointer
 
-.payment__buttons-cancel 
-    color: $primary
+        &-confirm 
+            background: $primary
+            box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.40)
+            color: $base
+
+        &-cancel 
+            color: $primary
 
 </style>

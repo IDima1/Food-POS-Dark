@@ -54,17 +54,15 @@ export default {
 .menu 
     grid-area: 2 / 2 / 4 / 3
 
-.menu__header 
-    display: flex
-    justify-content: space-between
+    &__header 
+        display: flex
+        justify-content: space-between
 
-
-.menu__list 
-    margin-top: 50px
-    display: flex
-    justify-content: center
-    flex-wrap: wrap
-    grid-column-gap: 28px
-    grid-row-gap: 58px
-
+    &__list 
+        margin-top: 50px
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        grid-column-gap: 28px
+        grid-row-gap: 58px
 </style>

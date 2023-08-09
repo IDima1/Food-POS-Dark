@@ -59,87 +59,82 @@ const onViewAll = () => {
 
 <style lang="sass" scoped>
 @import '@/styles/variables.sass'
+
 .dashboard-most-ordered 
-    grid-area: 1 / 3 / 4 / 4
-    display: block
+    display: flex
     padding: 24px
     flex-direction: column
     align-items: flex-start
     gap: 20px
     border-radius: 8px
     background: $darkBg2
-    margin-top: 24px
 
-.dashboard-most-ordered__header
-    display: flex
-    justify-content: space-between
-    align-items: center
-    gap: 111px
-    color: $white
-    padding-bottom: 20px
-    border-bottom: 2px solid $darkLine
-    width: 100%
+    &__header
+        display: flex
+        justify-content: space-between
+        align-items: center
+        gap: 111px
+        color: $white
+        padding-bottom: 20px
+        border-bottom: 2px solid $darkLine
+        width: 100%
 
-.dashboard-most-ordered__select
-    display: flex
-    height: 45px
-    width: 95px
-    padding: 14px
-    padding-left: 44px
-    background-color: $formBg
+    &__select
+        display: flex
+        height: 45px
+        width: 95px
+        padding: 14px
+        padding-left: 44px
+        background-color: $formBg
 
-.dashboard-most-ordered__content
-    display: flex
-    flex-direction: column
-    align-items: flex-start
-    gap: 32px
+    &__content
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 32px
 
-.dashboard-most-ordered__content-menu
-    display: flex
-    flex-direction: column
-    align-items: flex-start
-    gap: 24px
-    width: 100%
-    padding: 20px 0px 32px 0
+    &__content-menu
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 24px
+        width: 100%
 
-.dashboard-most-ordered__content-menu-dish
-    display: flex
-    align-items: flex-start
-    gap: 16px
+    &__content-menu-dish
+        display: flex
+        align-items: flex-start
+        gap: 16px
 
-.dashboard-most-ordered__content-img
-    width: 56px
-    height: 56px
-    border-radius: 50%
+    &__content-img
+        width: 56px
+        height: 56px
+        border-radius: 50%
 
-.dashboard-most-ordered__content-description
-    display: flex
-    flex-direction: column
-    align-items: flex-start
-    gap: 4px
+    &__content-description
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 4px
 
-.normal-medium  
-    color: $textLighter
+    .normal-medium  
+        color: $textLighter
 
+    .small-regular 
+        color: $textLight
 
-.small-regular 
-    color: $textLight
+    &__button 
+        display: flex
+        width: 100%
+        padding: 14px
+        justify-content: center
+        align-items: center
+        gap: 8px
+        border-radius: 8px
+        border: 1px solid  $primary
+        color: $primary
+        background-color: $darkBg2
+        cursor: pointer
 
-.dashboard-most-ordered__button 
-    display: flex
-    width: 100%
-    padding: 14px
-    justify-content: center
-    align-items: center
-    gap: 8px
-    border-radius: 8px
-    border: 1px solid  $primary
-    color: $primary
-    background-color: $darkBg2
-    cursor: pointer
-
-.normal-semibold 
-    color: $primary
-
-
+    .normal-semibold 
+        color: $primary
 </style>

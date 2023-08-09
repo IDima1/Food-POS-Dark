@@ -70,6 +70,7 @@ const selectTab = (index) => {
 
 <style lang="sass" scoped>
 @import '@/styles/variables.sass'
+
 .setting-option 
     grid-area: 2 / 2 / 3 / 3
     display: inline-flex
@@ -82,47 +83,47 @@ const selectTab = (index) => {
     background-color: $darkBg2
     position: relative
 
-.setting-option__content 
-    display: flex
-    width: 275px
-    padding: 24px 0px 24px 24px
-    align-items: flex-end
-    gap: 20px
-    border-radius: 8px
+    &__content 
+        display: flex
+        width: 275px
+        padding: 24px 0px 24px 24px
+        align-items: flex-end
+        gap: $gap-20
+        border-radius: 8px
+        transition: background-color 0.2s
 
-.setting-option__content p
-    display: inline-flex
-    flex-direction: column
-    align-items: flex-start
-    gap: 4px
+        p
+            display: inline-flex
+            flex-direction: column
+            align-items: flex-start
+            gap: 4px
+
+        &-img
+            width: 16px
+            height: 16px
+            flex-shrink: 0
+            margin-right: 8px
+
+        &:hover 
+            cursor: pointer
+            background-color: rgba(234, 124, 105, 0.26)
+
+        &.active-tab 
+            background-color: rgba(234, 124, 105, 0.26)
+            position: relative
+
+            &::after 
+                content: ""
+                position: absolute
+                top: auto
+                right: 0
+                height: 39px
+                width: 4px
+                border-radius: 16px
+                background-color: $primary
+                z-index: 1
 
 .small-regular 
-    color: #ABBBC2
+    color: $textLight
     padding-left: 24px
-
-.setting-option__content-img
-    width: 16px
-    height: 16px
-    flex-shrink: 0
-    margin-right: 8px
-
-.setting-option__content:hover 
-    cursor: pointer
-    background-color:rgba(234, 124, 105, 0.26)
-
-.setting-option__content.active-tab 
-    background-color: rgba(234, 124, 105, 0.26)
-    position: relative
-
-.setting-option__content.active-tab::after 
-    content: ""
-    position: absolute
-    top: auto
-    right: 0
-    height: 39px
-    width: 4px
-    border-radius: 16px
-    background-color: $primary
-    z-index: 1
-
 </style>

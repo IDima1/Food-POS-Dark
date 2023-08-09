@@ -116,7 +116,7 @@ export default {
     height: 100vh
     display: flex
     flex-direction: column
-    justify-content:flex-start
+    justify-content: flex-start
     grid-area: 2 / 3 / 3 / 4
     padding: 24px
     margin: 0 24px 24px 0
@@ -124,139 +124,137 @@ export default {
     background-color: $darkBg2
     overflow: hidden
 
-.product-management__header-title 
-    display: flex
-    align-items: center
-    justify-content: space-between
-    margin-bottom: 35px
-.product-management__header-button
-    display: flex
-    width: 178px
-    padding: 14px
-    justify-content: center
-    align-items: center
-    gap: 8px
-    cursor: pointer
-    border-radius: 8px
-    border: 1px solid $darkLine
-    background-color: $darkBg2
-    white-space: nowrap
+    &__header-title 
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-bottom: 35px
 
-.product-management__header-tabs 
-    display: flex
-    align-items: center
-    color: $white
-    height: 33px
+    &__header-button
+        display: flex
+        width: 178px
+        padding: 14px
+        justify-content: center
+        align-items: center
+        gap: 8px
+        cursor: pointer
+        border-radius: 8px
+        border: 1px solid $darkLine
+        background-color: $darkBg2
+        white-space: nowrap
 
-.product-management__header-tabs p 
-    cursor: pointer
-    transition: color 0.2s ease
-    margin-right: 32px
+    &__header-tabs 
+        display: flex
+        align-items: center
+        color: $white
+        height: 33px
 
-.product-management__header-tabs p:hover 
-    color: $primary
+        p 
+            cursor: pointer
+            transition: color 0.2s ease
+            margin-right: 32px
 
-.product-management__header-tabs p.selected 
-    color: $primary
-    position: relative
+            &.selected 
+                color: $primary
+                position: relative
 
-.product-management__header-tabs p.selected::after
-    content: ""
-    position: absolute
-    bottom: -9px
-    left: 0
-    width: 37px
-    height: 3px
-    background-color: $primary
-    border-radius: 10px
+                &::after
+                    content: ""
+                    position: absolute
+                    bottom: -9px
+                    left: 0
+                    width: 37px
+                    height: 3px
+                    background-color: $primary
+                    border-radius: 10px
 
-.product-management__devider 
-    border-bottom: 1px solid $darkLine
-    margin-bottom: 24px
+    &__devider 
+        border-bottom: 1px solid $darkLine
+        margin-bottom: 24px
 
-.product-management__content 
-    display: flex
-    flex-direction: column
-    justify-content: flex-end
-    align-items: flex-start
-    flex-grow: 1
-    position: relative
-    gap: 16px
-    max-height: calc(100vh - 350px)
-    overflow-y: auto
+    &__content 
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        align-items: flex-start
+        flex-grow: 1
+        position: relative
+        gap: 16px
+        max-height: calc(100vh - 350px)
+        overflow-y: auto
 
-.product-management__content-row 
-    display: inline-flex
-    align-items: flex-start
-    gap: 16px
-    color: $white
-    flex-wrap: wrap
-    overflow-y: auto
-    scrollbar-width: none
+        &-row 
+            display: inline-flex
+            align-items: flex-start
+            gap: 16px
+            color: $white
+            flex-wrap: wrap
+            overflow-y: auto
+            scrollbar-width: none
 
-.product-management__content-row::-webkit-scrollbar 
-    width: 0
+            &::-webkit-scrollbar 
+                width: 0
 
-.product-management__content-add-new-dish 
-    display: inline-flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    gap: 8px
-    width: 221px
-    height: 299px
-    flex-shrink: 0
-    border-radius: 8px
-    border: 1px dashed $primary
-    background: transparent
+        &-add-new-dish 
+            display: inline-flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            gap: 8px
+            width: 221px
+            height: 299px
+            flex-shrink: 0
+            border-radius: 8px
+            border: 1px dashed $primary
+            background: transparent
 
-.product-management__content-add-button 
-    display: flex
-    padding: 14px
-    align-items: flex-start
-    gap: 10px
-    border-radius: 8px
-    background-color: transparent
-    border: none
-    cursor: pointer
+        &-add-button 
+            display: flex
+            padding: 14px
+            align-items: flex-start
+            gap: 10px
+            border-radius: 8px
+            background-color: transparent
+            border: none
+            cursor: pointer
 
-.product-management__content-text 
-    color: $primary
-    text-align: center
+        &-text 
+            color: $primary
+            text-align: center
 
-.product-management__content-row-cards 
-    display: flex
-    flex-wrap: wrap
-    align-items: flex-start
-    justify-content: flex-start
-    gap: 16px
+        &-row-cards 
+            display: flex
+            flex-wrap: wrap
+            align-items: flex-start
+            justify-content: flex-start
+            gap: 16px
 
-.product-management__buttons 
-    align-self: flex-start
-    margin-top: auto
-    display: flex
-    gap: 8px
+    &__buttons 
+        align-self: flex-start
+        margin-top: auto
+        display: flex
+        gap: 8px
 
-.product-management__discard-button, 
-.product-management__save-button
-    display: flex
-    width: 172px
-    padding: 14px
-    justify-content: center
-    align-items: center
-    gap: 8px
-    border-radius: 8px
-    background-color: transparent
-    cursor: pointer
+    &__discard-button, 
+    &__save-button
+        display: flex
+        width: 172px
+        padding: 14px
+        justify-content: center
+        align-items: center
+        gap: 8px
+        border-radius: 8px
+        background-color: transparent
+        cursor: pointer
 
-.product-management__save-button 
-    background: $primary
-    border: 1px solid $primary
-    box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.40)
-    color: $white
+    &__save-button 
+        background: $primary
+        border: 1px solid $primary
+        box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.40)
+        color: $white
 
-.product-management__discard-button 
-    border: 1px solid $primary
+    &__discard-button 
+        border: 1px solid $primary
 
 
 </style>

@@ -17,12 +17,11 @@ export default {
 <style lang="sass" scoped>
 @import '@/styles/variables.sass'
 .dashboard-header 
-    grid-area: 1 / 2 / 2 / 3
     display: flex
     flex-direction: column
     align-items: flex-start
-    padding-top: 24px
     gap: 24px
+    width: 100%
 
     &__main-title
         display: flex

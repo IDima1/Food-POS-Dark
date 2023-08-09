@@ -19,9 +19,9 @@ const addToCart = () => {
     emit('addToCart', dish_data);
 };
 </script>
-
 <style lang="sass" scoped>
 @import '@/styles/styles.sass'
+
 .menu-dish-small-card 
     display: flex
     flex-direction: column
@@ -29,23 +29,21 @@ const addToCart = () => {
     justify-content: space-between
     width: 192px
     height: 226px
-    background-color: #1F1D2B
+    background-color: $darkBg2
     border-radius: 15px
     text-align: center
-
     position: relative
     padding: 0 40px
     padding-top: 120px
     padding-bottom: 36px
-    font-size: 0.8em
     cursor: pointer
 
-.menu-dish-small-card__image 
-    border-radius: 50%
-    position: absolute
-    bottom: 125px
+    &__image 
+        border-radius: 50%
+        position: absolute
+        bottom: 125px
 
-.menu-dish-small-card__available 
-    color: $textLight
+    &__available 
+        color: $textLight
 
 </style>

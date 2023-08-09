@@ -1,10 +1,16 @@
 <template>
     <div class="dashboard">
-        <DashboardHeader/>
-        <DashboardOrderCard/>
-        <DashboardOrderReport/>
-        <DashboardMostOrdered/>
-        <DashboardMostTypeOfOrder/>
+        <div class="dashboard__column-one">
+            <DashboardHeader/>
+            <div class="dashboard__column-one-content">
+                <DashboardOrderCard/>
+                <DashboardOrderReport/>
+            </div>
+        </div>
+        <div class="dashboard__column-two">
+            <DashboardMostOrdered/>
+            <DashboardMostTypeOfOrder/>
+        </div>
     </div>
 </template>
 
@@ -27,13 +33,36 @@ export default {
 }
 </script>
 
-<style scoped>
-.dashboard {
-    display: grid;
-    grid-template-columns: 104px auto 372px;
-    grid-template-rows: auto auto auto auto;
-    grid-column-gap: 24px;
-    grid-row-gap: 24px;
-    margin-right: 24px;
-} 
+<style lang="sass" scoped>
+@import '@/styles/styles.sass'
+.dashboard
+    display: flex
+    align-items: stretch
+    gap: $gap-24
+    flex: 1
+    
+    &__column-one
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: $gap-24
+        flex: 1 
+        margin: 24px 0px 0px 128px
+        min-height: 100vh
+
+    &__column-one-content
+        display: flex
+        flex-direction: column
+        gap: $gap-24
+        flex: 1 
+        width: 100%
+
+    &__column-two
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: $gap-24
+        width: 372px
+        margin: 24px 24px 0px 0px
+        
 </style>

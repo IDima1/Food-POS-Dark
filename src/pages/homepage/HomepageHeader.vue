@@ -35,54 +35,50 @@ const selectCategory = (category) => {
 
 <style lang="sass" scoped>
 @import '@/styles/variables.sass'
+
 .header
     padding-top: 24px
     grid-area: 1 / 2 / 2 / 3
 
-.header__main 
-    display: flex
-    justify-content: space-between
-    align-items: center
-    height: 65px
-    margin-bottom: 35px
+    &__main 
+        display: flex
+        justify-content: space-between
+        align-items: center
+        height: 65px
+        margin-bottom: 35px
 
-.header__main-search-bar 
-    position: relative
-    display: flex
-    align-items: center
+    &__main-search-bar 
+        position: relative
+        display: flex
+        align-items: center
 
-.header__main-search-bar-img
-    position: absolute
-    left: 10px
+        &-img
+            position: absolute
+            left: 10px
 
-.header__menu-slider 
-    display: flex
-    align-items: center
-    color: $white
+    &__menu-slider 
+        display: flex
+        align-items: center
+        color: $white
+        border-bottom: 1px solid $darkLine
+        padding-bottom: 15px
 
-    border-bottom: 1px solid $darkLine
-    padding-bottom: 15px
+        p 
+            cursor: pointer
+            transition: color 0.2s ease
+            margin-right: 32px
 
-.header__menu-catetory
-    cursor: pointer
-    transition: color 0.2s ease
-    margin-right: 32px
+            &.selected 
+                color: $primary
+                position: relative
 
-.header__menu-slider p:hover 
-    color: $primary
-
-.header__menu-slider p.selected 
-    color: $primary
-    position: relative
-
-.header__menu-slider p.selected::after 
-    content: ""
-    position: absolute
-    bottom: -16px
-    left: 0
-    width: 37px
-    height: 3px
-    background-color: $primary
-    border-radius: 10px
-
+                &::after 
+                    content: ""
+                    position: absolute
+                    bottom: -16px
+                    left: 0
+                    width: 37px
+                    height: 3px
+                    background-color: $primary
+                    border-radius: 10px
 </style>

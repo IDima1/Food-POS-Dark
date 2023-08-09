@@ -142,176 +142,175 @@ export default {
     width: 406px
     transition: transform 0.3s ease
 
-.cart
-    height: 100vh
-    padding: 24px
-    background-color: $darkBg2
-    width: 406px
-    position: fixed
-    right: 0
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    overflow: hidden
+    .cart
+        height: 100vh
+        padding: 24px
+        background-color: $darkBg2
+        width: 406px
+        position: fixed
+        right: 0
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        overflow: hidden
 
-.cart__header 
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    height: 132px
-    gap: 24px
+        &__header 
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            height: 132px
+            gap: 24px
 
-.cart__confirmation 
-    display: flex
-    flex-direction: column
-    align-items: flex-start
-    gap: 16px
+        &__confirmation 
+            display: flex
+            flex-direction: column
+            align-items: flex-start
+            gap: 16px
 
-.cart__confirmation-header
-    display: flex
-    justify-content: space-between
-    align-items: center
-    width: 100%
+            &-header
+                display: flex
+                justify-content: space-between
+                align-items: center
+                width: 100%
 
-.cart__confirmation-title 
-    display: flex
-    gap: 8px
-    flex-direction: column
+            &-title 
+                display: flex
+                gap: 8px
+                flex-direction: column
 
-.large-medium p:first-child
-    color: $textLight
+            .large-medium
+                color: $textLight
 
-.cart__confirmation-button
-    display: inline-flex
-    padding: 14px
-    align-items: flex-start
-    gap: 10px
-    border-radius: 8px
-    background: $primary
-    border: none
+            &-button
+                display: inline-flex
+                padding: 14px
+                align-items: flex-start
+                gap: 10px
+                border-radius: 8px
+                background: $primary
+                border: none
 
-.cart__confirmation-button-img
-    width: 20px
-    height: 20px
+                &-img
+                    width: 20px
+                    height: 20px
 
-.cart__header-selectors
-    display: flex
-    align-items: flex-start
-    gap: 10px
+        &__header-selectors
+            display: flex
+            align-items: flex-start
+            gap: 10px
 
-.cart__header-selectors p
-    color: $primary
-    background-color: $darkBg1
-    border: 1px solid $darkLine
-    border-radius: 5px
-    padding: 8px
-    margin-right: 10px
+            p
+                color: $primary
+                background-color: $darkBg1
+                border: 1px solid $darkLine
+                border-radius: 5px
+                padding: 8px
+                margin-right: 10px
 
-    cursor: pointer
-    transition: border 0.2s ease
+                cursor: pointer
+                transition: border 0.2s ease
 
-.cart__order-info
-    display: flex
-    justify-content: space-between
-    color: $white
+            p.selected 
+                color: $white
+                background-color: $primary
 
-.cart__order-info p:first-child 
-    flex-grow: 2
+        &__order-info
+            display: flex
+            justify-content: space-between
+            color: $white
 
-.cart__order-info p:last-child
-    width: 75px
-    text-align: right
+            p:first-child 
+                flex-grow: 2
 
-.cart__devider 
-    border: 1px solid $darkLine
-    width: 100%
+            p:last-child
+                width: 75px
+                text-align: right
 
-.cart__devider-content
-    border-bottom: 1px solid $darkLine
-    padding-top: 24px
-    width: 100%
+        &__devider 
+            border: 1px solid $darkLine
+            width: 100%
 
-.cart__content 
-    display: flex
-    flex-direction: column
-    flex-grow: 1
-    position: relative
-    margin-bottom: 42px
-    height: calc(100% - 174px)
-    overflow-y: auto
+        &__devider-content
+            border-bottom: 1px solid $darkLine
+            padding-top: 24px
+            width: 100%
 
-.cart__content-cart-items
-    height: calc(100% - 100px)
-    overflow-y: auto
-    scrollbar-width: none
+        &__content 
+            display: flex
+            flex-direction: column
+            flex-grow: 1
+            position: relative
+            margin-bottom: 42px
+            height: calc(100% - 174px)
+            overflow-y: auto
 
-.cart__content-cart-items::-webkit-scrollbar
-    width: 0
+            &-cart-items
+                height: calc(100% - 100px)
+                overflow-y: auto
+                scrollbar-width: none
 
-.cart__total 
-    display: flex
-    justify-content: space-between
-    flex-direction: column
-    gap: 16px
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
+                &::-webkit-scrollbar
+                    width: 0
 
-.cart__total-disaccount, .cart__total-subtotal
-    display: flex
-    flex-direction: row
-    justify-content: space-between
+        &__total 
+            display: flex
+            justify-content: space-between
+            flex-direction: column
+            gap: 16px
+            position: absolute
+            bottom: 0
+            left: 0
+            right: 0
 
-.large-medium 
-    color: $textLight
+            &-disaccount, &-subtotal
+                display: flex
+                flex-direction: row
+                justify-content: space-between
 
-.large-semibold 
-    color: $white
+            .large-medium
+                color: $white
 
-.cart__order-payment 
-    height: 48px
-    background-color: $primary
-    border-radius: 5px
-    border: none
-    display: flex
-    justify-content: center
-    align-items: center
-    color: $base
-    padding: 14px
-    gap: 8px
-    cursor: pointer
-    transition: box-shadow 0.2s ease
+            .normal-regular
+                color: $textLight 
 
-    &:hover
-        box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.30)
-    
+        &__order-payment 
+            height: 48px
+            background-color: $primary
+            border-radius: 5px
+            border: none
+            display: flex
+            justify-content: center
+            align-items: center
+            color: $base
+            padding: 14px
+            gap: 8px
+            cursor: pointer
+            transition: box-shadow 0.2s ease
 
-.cart__header-selectors p.selected 
-    color: $white
-    background-color: $primary
+            &:hover
+                box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.30)
 
-.cart__payment 
-    display: flex
-    justify-content: flex-start
-    margin-left: 406px
+        &__payment 
+            display: flex
+            justify-content: flex-start
+            margin-left: 406px
 
-.cart-overlay 
-    position: fixed
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    background: rgba(0, 0, 0, 0.70)
-    z-index: 98
-    display: none
+    .cart-overlay 
+        position: fixed
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background: rgba(0, 0, 0, 0.70)
+        z-index: 98
+        display: none
 
-.cart-container.show-payment + .cart-overlay 
-    display: block
+    // .cart-container.show-payment + .cart-overlay 
+    //     display: block
 
-.cart__content-empty-message-text
-    color: $white
-    text-align: center
-    margin-top: 24px
+    .cart__content-empty-message-text
+        color: $white
+        text-align: center
+        margin-top: 24px
 
 </style>

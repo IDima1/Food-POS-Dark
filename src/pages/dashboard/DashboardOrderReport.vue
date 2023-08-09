@@ -48,101 +48,100 @@ import orderReportData from '@/data/order-report.js';
 
 <style lang="sass" scoped>
 @import '@/styles/variables.sass'
+
 .dashboard-order-report 
-    grid-area:  3 / 2 / 6 / 3
     display: flex
     padding-top: 24px
     flex-direction: column
     justify-content: center
-    align-items: center // fix position
+    align-items: center
     gap: 16px
     margin-bottom: 24px
     border-radius: 8px
     background: $darkBg2
-
-.dashboard-order-report__header 
-    display: flex
-    flex-direction: column
-    justify-content: flex-start
-
-.dashboard-order-report__header-title 
-    display: flex
-    flex-direction: row
-    justify-content: space-between
-    align-items: center
-    margin-bottom: 24px
-
-.dashboard-order-report__header-select
-    width: 128px
-    background: url(/src/assets/icons/Option.svg) no-repeat left 14px center
-    background-color: $formBg
-
-.dashboard-order-report__header-tabs 
-    height: 20px
-    display: grid
-    grid-template-columns: 189px 169px 149px 91px
-    color: $white
-    white-space: nowrap
-    margin-bottom: 16px
-
-.dashboard-order-report__header-tabs p 
-    margin-right: 70px
-
-.dashboard-order-report__header-tabs-devider 
-    border: 1px solid $darkLine
     width: 100%
 
-.dashboard-order-report__feedbacks 
-    display: flex
-    justify-content: center
-    align-items: center
+    &__header 
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
 
-.dashboard-order-report__feedback 
-    display: flex
-    flex-direction: column
-    align-items: flex-start
-    gap: 2px
+        &-title 
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            align-items: center
+            margin-bottom: 24px
 
-.dashboard-order-report__feedback-one 
-    display: grid
-    grid-template-columns: 189px 169px 149px 91px
-    padding: 10px 0px
-    align-items: flex-start
-    flex: 1
-    color: $textLighter
+        &-select
+            width: 128px
+            background: url(/src/assets/icons/Option.svg) no-repeat left 14px center
+            background-color: $formBg
 
-.dashboard-order-report__feedback-one-customer
-    display: flex
-    align-items:center
-    gap: 16px
+        &-tabs 
+            display: grid
+            grid-template-columns: 189px 169px 149px 91px
+            color: $white
+            white-space: nowrap
+            margin-bottom: 16px
 
-.dashboard-order-report__feedback-one-avatar
-    width: 32px
-    height: 32px
-    flex-shrink: 0
+            p 
+                margin-right: 70px
 
-.normal-regular 
-    color: $textLighter
+            &-devider 
+                border: 1px solid $darkLine
+                width: 100%
 
-.dashboard-order-report__feedback-one-status 
-    display: flex
-    width: 91px
-    padding: 4px 12px
-    justify-content: center
-    align-items: center
-    gap: 10px
-    border-radius: 30px
+    &__feedbacks 
+        display: flex
+        justify-content: center
+        align-items: center
 
-.dashboard-order-report__feedback-one-status--completed 
-    background: rgba(107, 226, 190, 0.24)
-    color: $green
+    &__feedback 
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 2px
 
-.dashboard-order-report__feedback-one-status--preparing
-    background: rgba(146, 144, 254, 0.20)
-    color: $purple
-    
-.dashboard-order-report__feedback-one-status--pending 
-    background: rgba(255, 181, 114, 0.20)
-    color: $orange
+        &-one 
+            display: grid
+            grid-template-columns: 189px 169px 149px 91px
+            padding: 10px 0px
+            align-items: flex-start
+            flex: 1
+            color: $textLighter
 
+        &-one-customer
+            display: flex
+            align-items: center
+            gap: 16px
+
+        &-one-avatar
+            width: 32px
+            height: 32px
+            flex-shrink: 0
+
+        .normal-regular 
+            color: $textLighter
+
+        &-one-status 
+            display: flex
+            width: 91px
+            padding: 4px 12px
+            justify-content: center
+            align-items: center
+            gap: 10px
+            border-radius: 30px
+
+        &-one-status--completed 
+            background: rgba(107, 226, 190, 0.24)
+            color: $green
+
+        &-one-status--preparing
+            background: rgba(146, 144, 254, 0.20)
+            color: $purple
+
+        &-one-status--pending 
+            background: rgba(255, 181, 114, 0.20)
+            color: $orange
 </style>

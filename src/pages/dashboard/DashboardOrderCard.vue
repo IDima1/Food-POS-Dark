@@ -70,7 +70,6 @@ const getPositivePercentage = cardDetails.map((card) => ({
 @import '@/styles/variables.sass'
 
 .dashboard-order-cards 
-    grid-area: 2 / 2 / 3 / 3
     display: flex
     align-items: flex-start
     justify-content: space-between
@@ -87,42 +86,41 @@ const getPositivePercentage = cardDetails.map((card) => ({
     background: $darkBg2
     cursor: pointer
 
-.dashboard-order-cards__card-description 
-    display: flex
-    justify-content: center
-    align-items: center
-    gap: 12px
+    &-description 
+        display: flex
+        justify-content: center
+        align-items: center
+        gap: 12px
 
-.dashboard-order-cards__card-icon
-    display: flex
-    padding: 7px
-    align-items: flex-start
-    gap: 10px
-    border-radius: 8px
-    background: $darkBg1
+    &-icon
+        display: flex
+        padding: 7px
+        align-items: flex-start
+        gap: 10px
+        border-radius: 8px
+        background: $darkBg1
 
-.dashboard-order-cards__card-arrow
-    display: flex
-    padding: 2px
-    align-items: flex-start
-    gap: 10px
-    border-radius: 20px
-    width: 16px
-    height: 16px
+    &-arrow
+        display: flex
+        padding: 2px
+        align-items: flex-start
+        gap: 10px
+        border-radius: 20px
+        width: 16px
+        height: 16px
 
-.dashboard-order-cards__card-content
-    display: flex
-    flex-direction: column
-    align-items: flex-start
-    gap: 8px
+    &-content
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 8px
 
-.normal-medium 
-    color: $textLight
+    .normal-medium 
+        color: $textLight
 
-.green-text
-    color: $green
+    .green-text
+        color: $green
 
-.red-text 
-    color: $red
-
+    .red-text 
+        color: $red
 </style>
