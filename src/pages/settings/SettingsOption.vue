@@ -16,13 +16,15 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n';
 import AppereanceIcon from '@/assets/icons/Appereance.svg';
 import RestaurantIcon from '@/assets/icons/Restaurant.svg';
-import DiscountIcon from '@/assets/icons/Appereance.svg';
-import NotificationIcon from '@/assets/icons/Restaurant.svg';
-import SecurityIcon from '@/assets/icons/Appereance.svg';
-import About_UsIcon from '@/assets/icons/Restaurant.svg';
+import DiscountIcon from '@/assets/icons/Discount.svg';
+import NotificationIcon from '@/assets/icons/Notification.svg';
+import SecurityIcon from '@/assets/icons/Security.svg';
+import About_UsIcon from '@/assets/icons/About Us.svg';
 
+const { t } = useI18n();
 const activeTab = ref(2);
 const tabs = [
     {
@@ -69,7 +71,7 @@ const selectTab = (index) => {
 </script>
 
 <style lang="sass" scoped>
-@import '@/styles/variables.sass'
+@import '@/styles/app.sass'
 
 .setting-option 
     grid-area: 2 / 2 / 3 / 3
@@ -80,50 +82,49 @@ const selectTab = (index) => {
     flex-shrink: 0
     margin-bottom: 24px
     border-radius: 8px
-    background-color: $darkBg2
+    background-color: $background-secondary-main
     position: relative
 
-    &__content 
-        display: flex
-        width: 275px
-        padding: 24px 0px 24px 24px
-        align-items: flex-end
-        gap: $gap-20
-        border-radius: 8px
-        transition: background-color 0.2s
+.setting-option__content
+    display: flex
+    width: 275px
+    padding: 24px 0px 24px 24px
+    align-items: flex-end
+    gap: 20px
+    border-radius: 8px
+    transition: background-color 0.2s
 
-        p
-            display: inline-flex
-            flex-direction: column
-            align-items: flex-start
-            gap: 4px
+.setting-option__content p
+    display: inline-flex
+    flex-direction: column
+    align-items: flex-start
+    gap: 4px
 
-        &-img
-            width: 16px
-            height: 16px
-            flex-shrink: 0
-            margin-right: 8px
+.setting-option__content-img
+    width: 16px
+    height: 16px
+    flex-shrink: 0
+    margin-right: 8px
+.setting-option__content:hover 
+    cursor: pointer
+    background-color: rgba(234, 124, 105, 0.26)
 
-        &:hover 
-            cursor: pointer
-            background-color: rgba(234, 124, 105, 0.26)
+.setting-option__content.active-tab 
+    background-color: rgba(234, 124, 105, 0.26)
+    position: relative
 
-        &.active-tab 
-            background-color: rgba(234, 124, 105, 0.26)
-            position: relative
-
-            &::after 
-                content: ""
-                position: absolute
-                top: auto
-                right: 0
-                height: 39px
-                width: 4px
-                border-radius: 16px
-                background-color: $primary
-                z-index: 1
+.setting-option__content.active-tab:after
+    content: ""
+    position: absolute
+    top: auto
+    right: 0
+    height: 39px
+    width: 4px
+    border-radius: 16px
+    background-color: $primary-main
+    z-index: 1
 
 .small-regular 
-    color: $textLight
+    color: $text-primary-light
     padding-left: 24px
 </style>

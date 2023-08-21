@@ -1,21 +1,21 @@
 <template>
     <div class="dashboard-header">
-        <div class="dashboard-header__main-title">
-            <h1 class="dashboard-header__headline">Dashboard</h1>
-            <p class="dashboard-header__text large-regular">Tuesday, 2 Feb 2021</p>
+        <div class="dashboard-header__title">
+            <h1 class="dashboard-header__header">{{ $t('headers.dashboard')}}</h1>
+            <p class="dashboard-header__date large-regular">{{ $t('current-date')}}</p>
         </div>
         <div class="dashboard-header__devider"></div>
     </div>
 </template>
 
-<script>
-export default {
-    name: 'DashboardHeader'
-}
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 </script>
 
 <style lang="sass" scoped>
-@import '@/styles/variables.sass'
+@import '@/styles/app.sass'
 .dashboard-header 
     display: flex
     flex-direction: column
@@ -23,16 +23,16 @@ export default {
     gap: 24px
     width: 100%
 
-    &__main-title
-        display: flex
-        flex-direction: column
-        justify-content: flex-start
+.dashboard-header__title
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
 
-    &__text
-        color: $textLight
+.dashboard-header__date
+    color: $text-primary-light
 
-    &__devider
-        border-bottom: 1px solid $darkLine
-        width: 100%
+.dashboard-header__devider
+    border-bottom: 1px solid $border-primary-main
+    width: 100%
 
 </style>

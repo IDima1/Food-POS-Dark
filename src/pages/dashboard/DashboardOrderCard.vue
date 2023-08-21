@@ -1,73 +1,60 @@
 <template>
     <div class="dashboard-order-cards">
-        <div v-for="card in getPositivePercentage" 
-            :key="card.title" 
-            class="dashboard-order-cards__card">
-            <div class="dashboard-order-cards__card-description">
-                <img class="dashboard-order-cards__card-icon" :src="card.icon">
-                <p 
-                    class="dashboard-order-cards__card-percentage small-medium"
-                    :class="{ 'green-text'
-                    :card.positivePercentage, 'red-text'
-                    :!card.positivePercentage }">
-                    {{ card.percentage }}
-                </p>
-                <img
-                    class="dashboard-order-cards__card-arrow"
-                    :src="card.positivePercentage ? card.arrowUpIcon : card.arrowDownIcon"
-                    :style="{ backgroundColor: card.positivePercentage ? 'rgba(136, 224, 145, 0.24)' : 'rgba(255, 100, 113, 0.24)' }"
-                >
-            </div>
-            <div class="dashboard-order-cards__card-content">
-                <h1>{{ card.amount }}</h1>
-                <p class="dashboard-order-cards__card-content-description normal-medium">{{ card.description }}</p>
-            </div>
-        </div>
+        <template v-if="isLoaded">
+            <template v-if="isLoadFailed">
+                <p class="large-semibold">Ooops... Something went wrong</p>
+            </template>
+            <template v-else>
+                <div v-for="card in cards" 
+                    :key="card.description" 
+                    class="dashboard-order-cards__card">
+                    <div class="dashboard-order-cards__description">
+                        <img class="dashboard-order-cards__icon" :src="'../src/assets/icons/' + card.icon" alt="">
+                        <p
+                        class="dashboard-order-cards__percentage small-medium"
+                        :class="{'green-text': isPositivePercentage(card.percentage), 'red-text': !isPositivePercentage(card.percentage)}"
+                        >
+                        {{ card.percentage }}
+                        </p>
+                        <img
+                            class="dashboard-order-cards__arrow"
+                            :src="getArrowIconUrl(card.percentage)"
+                            :style="{ backgroundColor: isPositivePercentage(card.percentage) ? 'rgba(136, 224, 145, 0.24)' : 'rgba(255, 100, 113, 0.24)' }"
+                        >
+                    </div>
+                    <div class="dashboard-order-cards__content">
+                        <h1 class="dashboard-order-cards__amount">{{ card.amount }}</h1>
+                        <p class="dashboard-order-cards__text normal-medium">{{ card.description }}</p>
+                    </div>
+                </div>
+            </template>
+        </template>
+        <template v-else>
+            <p class="large-semibold">loading ...</p>
+        </template>
     </div>
 </template>
 
 <script setup>
-import CoinIcon from '@/assets/icons/Coin.svg'
-import OrderIcon from '@/assets/icons/Order.svg'
-import CustomerIcon from '@/assets/icons/Customer.svg'
-import ArrowUpIcon from '@/assets/icons/Arrow-up-green.svg'
-import ArrowDownIcon from '@/assets/icons/Arrow-down-red.svg'
+import { ref, reactive, onMounted } from 'vue';
+import { useStore } from '@/store/index.js'; 
 
-const cardDetails = [
-    {
-        icon: CoinIcon,
-        percentage: '+32.40%',
-        arrowUpIcon: ArrowUpIcon,
-        arrowDownIcon: ArrowDownIcon,
-        amount: '$10,243.00',
-        description: 'Total Revenue',
-    },
-    {
-        icon: OrderIcon,
-        percentage: '-12.40%',
-        arrowUpIcon: ArrowUpIcon,
-        arrowDownIcon: ArrowDownIcon,
-        amount: '23,456',
-        description: 'Total Dish Ordered',
-    },
-    {
-        icon: CustomerIcon,
-        percentage: '+2.40%',
-        arrowUpIcon: ArrowUpIcon,
-        arrowDownIcon: ArrowDownIcon,
-        amount: '1,234',
-        description: 'Total Customer',
-    },
-];
+const isLoaded = ref(false);
+const isLoadFailed = ref(false);
+const store = useStore();
+const cards = ref([])
 
-const getPositivePercentage = cardDetails.map((card) => ({
-    ...card,
-    positivePercentage: parseFloat(card.percentage) >= 0,
-    }));
+onMounted(async()=> {
+    await store.GET_ORDER_CARDS_FROM_MOCKOON(isLoaded, isLoadFailed);
+    cards.value = reactive(store.cards);
+});
+
+const isPositivePercentage = (percentage) => parseFloat(percentage) > 0;
+const getArrowIconUrl = (percentage) => `/src/assets/icons/${isPositivePercentage(percentage) ? 'Arrow-up-green.svg' : 'Arrow-down-red.svg'}`;
 </script>
 
 <style lang="sass" scoped>
-@import '@/styles/variables.sass'
+@import '@/styles/app.sass'
 
 .dashboard-order-cards 
     display: flex
@@ -83,44 +70,43 @@ const getPositivePercentage = cardDetails.map((card) => ({
     gap: 8px
     align-items: flex-start
     border-radius: 8px
-    background: $darkBg2
-    cursor: pointer
+    background: $background-secondary-main
 
-    &-description 
-        display: flex
-        justify-content: center
-        align-items: center
-        gap: 12px
+.dashboard-order-cards__description
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 12px
 
-    &-icon
-        display: flex
-        padding: 7px
-        align-items: flex-start
-        gap: 10px
-        border-radius: 8px
-        background: $darkBg1
+.dashboard-order-cards__icon
+    display: flex
+    padding: 7px
+    align-items: flex-start
+    gap: 10px
+    border-radius: 8px
+    background: $background-primary-main
 
-    &-arrow
-        display: flex
-        padding: 2px
-        align-items: flex-start
-        gap: 10px
-        border-radius: 20px
-        width: 16px
-        height: 16px
+.dashboard-order-cards__arrow
+    display: flex
+    padding: 2px
+    align-items: flex-start
+    gap: 10px
+    border-radius: 20px
+    width: 16px
+    height: 16px
 
-    &-content
-        display: flex
-        flex-direction: column
-        align-items: flex-start
-        gap: 8px
+.dashboard-order-cards__content
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    gap: 8px
 
-    .normal-medium 
-        color: $textLight
+.normal-medium 
+    color: $text-primary-light
 
-    .green-text
-        color: $green
+.green-text
+    color: $completed-main
 
-    .red-text 
-        color: $red
+.red-text 
+    color: $negative-main
 </style>

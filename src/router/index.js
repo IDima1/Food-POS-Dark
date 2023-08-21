@@ -3,7 +3,7 @@ import {
     createWebHistory 
 } from 'vue-router';
 
-import ROUTE_NAMES from '@/enums/enums.js'
+import ROUTE_NAMES from '@/enums/index.js'
 
 const routes = [
     {

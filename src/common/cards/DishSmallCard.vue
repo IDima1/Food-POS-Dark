@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
 const { dish_data = {} } = defineProps(['dish_data']);
 const emit = defineEmits();
@@ -29,7 +29,7 @@ const addToCart = () => {
     justify-content: space-between
     width: 192px
     height: 226px
-    background-color: $darkBg2
+    background-color: $background-secondary-main
     border-radius: 15px
     text-align: center
     position: relative
@@ -38,12 +38,12 @@ const addToCart = () => {
     padding-bottom: 36px
     cursor: pointer
 
-    &__image 
-        border-radius: 50%
-        position: absolute
-        bottom: 125px
+.menu-dish-small-card__image
+    border-radius: 50%
+    position: absolute
+    bottom: 125px
 
-    &__available 
-        color: $textLight
+.menu-dish-small-card__available
+    color: $text-primary-light
 
 </style>

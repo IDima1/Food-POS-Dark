@@ -2,11 +2,13 @@
     <div class="product-management">
         <div class="product-management__header">
             <div class="product-management__header-title">
-                <h2>Products Management</h2>
-                <button class="product-management__header-button" @click="onCategories">
-                    <img class="product-management__header-img" src="@/assets/icons/Option.svg" alt="">
-                    <p class="product-management__header-text normal-semibold">Manage Categories</p>
-                </button>
+                <h2>{{$t('headers.product-management')}}</h2>
+                <ButtonField 
+                    :label="$t('buttons.manage-button')" 
+                    :img="OptionImg" 
+                    class="product-management__header-button" 
+                    @click="onCategories"
+                />
             </div>
             <div class="product-management__header-tabs">
                 <p
@@ -15,7 +17,7 @@
                     @click="selectCategory(category)"
                     :class="{ 'selected': selectedCategory === category}"
                     class="product-management__header-tab normal-semibold"
-                    >{{ category }}
+                    >{{ $t(`categories.${category.toLowerCase().replace(/\s/g, '-')}`) }}
                 </p> 
             </div>
         </div>
@@ -25,44 +27,64 @@
                 <div class="product-management__content-row-cards">
                     <div class="product-management__content-add-product">
                         <div class="product-management__content-add-new-dish">
-                            <button class="product-management__content-add-button" @click="addNewDish">
-                                <img class="product-management__content-add-icon" src="@/assets/icons/Add.svg" alt="">
-                            </button>
-                            <p class="product-management__content-text large-semibold">Add new dish</p>
+                            <ButtonField
+                                class="product-management__content-add-button" 
+                                @click="addNewDish"
+                                :img="AddImg" 
+                            />
+                            <p class="product-management__content-text large-semibold">{{$t('buttons.add-button')}}</p>
                         </div>
                     </div>
-                <DishBigCard
-                    v-for="(dish, index) in dishes"
-                    :key="dish.article"
-                    :dish_data="dish"
-                    class="product-management__content-list-cards"
-                />
+                    <template v-if="isLoaded">
+                        <template v-if="isLoadFailed">
+                            <p class="large-semibold">Ooops... Something went wrong</p>
+                        </template>
+                        <template v-else>
+                            <DishBigCard
+                                v-for="dish in dishes"
+                                :key="dish.article"
+                                :dish_data="dish"
+                                class="product-management__content-list-cards"
+                            />
+                        </template>
+                    </template>
+                    <template v-else>
+                        <p class="large-semibold">loading ...</p>
+                    </template>
                 </div>
             </div>
         </div>
         <div class="product-management__devider"></div>
         <div class="product-management__buttons">
-            <button 
+            <ButtonField 
+                :label="$t('buttons.discard-button')" 
                 class="product-management__discard-button" 
-                @click="discardChanges">
-                <p class="normal-semibold">Discard Changes</p>
-            </button>
-            <button 
+                @click="discardChanges"
+            />
+            <ButtonField
+                :label="$t('buttons.save-button')" 
                 class="product-management__save-button" 
-                @click="saveChanges">
-                <p class="normal-semibold">Save Changes</p>
-            </button>
+                @click="saveChanges"
+            />
         </div>
     </div>
 </template>
 
 <script setup>
-import DishBigCard from "@/cards/DishBigCard.vue";
-import { ref } from "vue";
-import { useStore } from "@/pinia/pinia.js";
+import OptionImg from '@/assets/icons/Option.svg'
+import AddImg from '@/assets/icons/Add.svg'
+import ButtonField from "@/fields/ButtonField.vue";
+import DishBigCard from "@/common/cards/DishBigCard.vue";
+import { ref, computed } from "vue";
+import { useStore } from "@/store/index.js";
+import { useI18n } from 'vue-i18n';
 
+const isLoaded = ref(false);
+const isLoadFailed = ref(false);
+const { t } = useI18n();
 const store = useStore();
-const dishes = store.DISHES;
+store.GET_DISHES_FROM_MOCKOON(isLoaded, isLoadFailed);
+const dishes = computed(() => store.dishes);
 
 const selectedCategory = ref("Hot Dishes");
 const categories = ["Hot Dishes", "Cold Dishes", "Soup", "Grill", "Appetizer", "Dessert"];
@@ -91,9 +113,6 @@ const saveChanges = () => {
 
 <script>
 export default {
-    name: "SettingsProductManagement",
-    components:
-        DishBigCard,
     setup() {
         return {
             dishes,
@@ -110,7 +129,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '@/styles/variables.sass'
+@import '@/styles/app.sass'
 
 .product-management 
     height: 100vh
@@ -121,140 +140,131 @@ export default {
     padding: 24px
     margin: 0 24px 24px 0
     border-radius: 8px
-    background-color: $darkBg2
+    background-color: $background-secondary-main
     overflow: hidden
 
-    &__header-title 
-        display: flex
-        align-items: center
-        justify-content: space-between
-        margin-bottom: 35px
+.product-management__header-title
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-bottom: 35px
 
-    &__header-button
-        display: flex
-        width: 178px
-        padding: 14px
-        justify-content: center
-        align-items: center
-        gap: 8px
-        cursor: pointer
-        border-radius: 8px
-        border: 1px solid $darkLine
-        background-color: $darkBg2
-        white-space: nowrap
+.product-management__header-button
+    display: flex
+    width: 178px
+    padding: 14px
+    justify-content: center
+    align-items: center
+    gap: 8px
+    cursor: pointer
+    border-radius: 8px
+    border: 1px solid $border-primary-main
+    background-color: $background-secondary-main
+    white-space: nowrap
 
-    &__header-tabs 
-        display: flex
-        align-items: center
-        color: $white
-        height: 33px
+.product-management__header-tabs
+    display: flex
+    align-items: center
+    color: $white
+    height: 33px
 
-        p 
-            cursor: pointer
-            transition: color 0.2s ease
-            margin-right: 32px
+.product-management__header-tab
+    cursor: pointer
+    transition: color 0.2s ease
+    margin-right: 32px
 
-            &.selected 
-                color: $primary
-                position: relative
+.product-management__header-tab.selected 
+    color: $primary-main
+    position: relative
 
-                &::after
-                    content: ""
-                    position: absolute
-                    bottom: -9px
-                    left: 0
-                    width: 37px
-                    height: 3px
-                    background-color: $primary
-                    border-radius: 10px
+.product-management__header-tab::after
+    content: ""
+    position: absolute
+    bottom: -9px
+    left: 0
+    width: 37px
+    height: 3px
+    background-color: $primary-main
+    border-radius: 10px
 
-    &__devider 
-        border-bottom: 1px solid $darkLine
-        margin-bottom: 24px
+.product-management__devider
+    border-bottom: 1px solid $border-primary-main
+    margin-bottom: 24px
 
-    &__content 
-        display: flex
-        flex-direction: column
-        justify-content: flex-end
-        align-items: flex-start
-        flex-grow: 1
-        position: relative
-        gap: 16px
-        max-height: calc(100vh - 350px)
-        overflow-y: auto
+.product-management__content 
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    align-items: flex-start
+    flex-grow: 1
+    position: relative
+    gap: 16px
+    max-height: calc(100vh - 350px)
+    overflow-y: auto
 
-        &-row 
-            display: inline-flex
-            align-items: flex-start
-            gap: 16px
-            color: $white
-            flex-wrap: wrap
-            overflow-y: auto
-            scrollbar-width: none
+.product-management__content-row
+    display: inline-flex
+    align-items: flex-start
+    gap: 16px
+    color: $white
+    flex-wrap: wrap
+    overflow-y: auto
+    scrollbar-width: none
 
-            &::-webkit-scrollbar 
-                width: 0
+.product-management__content-row::-webkit-scrollbar 
+    width: 0
 
-        &-add-new-dish 
-            display: inline-flex
-            flex-direction: column
-            justify-content: center
-            align-items: center
-            gap: 8px
-            width: 221px
-            height: 299px
-            flex-shrink: 0
-            border-radius: 8px
-            border: 1px dashed $primary
-            background: transparent
+.product-management__content-add-new-dish
+    display: inline-flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 8px
+    width: 221px
+    height: 299px
+    flex-shrink: 0
+    border-radius: 8px
+    border: 1px dashed $primary-main
+    background: transparent
 
-        &-add-button 
-            display: flex
-            padding: 14px
-            align-items: flex-start
-            gap: 10px
-            border-radius: 8px
-            background-color: transparent
-            border: none
-            cursor: pointer
+.product-management__content-add-button
+    display: flex
+    padding: 14px
+    align-items: flex-start
+    gap: 10px
+    border-radius: 8px
+    background-color: transparent
+    border: none
+    cursor: pointer
 
-        &-text 
-            color: $primary
-            text-align: center
+.product-management__content-text
+    color: $primary-main
+    text-align: center
 
-        &-row-cards 
-            display: flex
-            flex-wrap: wrap
-            align-items: flex-start
-            justify-content: flex-start
-            gap: 16px
+.product-management__content-row-cards
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    justify-content: flex-start
+    gap: 16px
 
-    &__buttons 
-        align-self: flex-start
-        margin-top: auto
-        display: flex
-        gap: 8px
+.product-management__buttons
+    align-self: flex-start
+    margin-top: auto
+    display: flex
+    gap: 8px
 
-    &__discard-button, 
-    &__save-button
-        display: flex
-        width: 172px
-        padding: 14px
-        justify-content: center
-        align-items: center
-        gap: 8px
-        border-radius: 8px
-        background-color: transparent
-        cursor: pointer
+.product-management__discard-button, .product-management__save-button
+    width: 172px
+    background-color: transparent
 
-    &__save-button 
-        background: $primary
-        border: 1px solid $primary
-        box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.40)
-        color: $white
+.product-management__save-button
+    background: $primary-main
+    border: 1px solid $primary-main
+    box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.40)
+    color: $white
 
-    &__discard-button 
-        border: 1px solid $primary
-
+.product-management__discard-button 
+    border: 1px solid $primary-main
 
 </style>

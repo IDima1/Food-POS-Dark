@@ -1,22 +1,17 @@
 <template>
     <div class="setting">
-        <h1 class="setting__header">Settings</h1>
+        <h1 class="setting__header">{{$t('headers.settings')}}</h1>
         <SettingsOption/>
         <SettingsProductManagement/>
     </div>
 </template>
 
-<script>
+<script setup>
 import SettingsOption from '@/pages/settings/SettingsOption.vue';
 import SettingsProductManagement from '@/pages/settings/SettingsProductManagement.vue';
+import { useI18n } from 'vue-i18n';
 
-export default {
-    name: 'Settings',
-    components: {
-        SettingsOption,
-        SettingsProductManagement
-    }
-}
+const { t } = useI18n();
 </script>
 
 <style lang="sass" scoped>
@@ -27,9 +22,9 @@ export default {
     grid-column-gap: 24px
     grid-row-gap: 24px
 
-    &__header
-        grid-area: 1 / 2 / 2 / 4
-        display: flex
-        padding: 25px 0px 0px 0px
+.setting__header
+    grid-area: 1 / 2 / 2 / 4
+    display: flex
+    padding: 25px 0px 0px 0px
 
 </style>

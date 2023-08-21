@@ -34,35 +34,35 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '@/styles/styles.sass'
+@import '@/styles/app.sass'
 .dashboard
     display: flex
     align-items: stretch
-    gap: $gap-24
+    gap: 24px
     flex: 1
     
-    &__column-one
-        display: flex
-        flex-direction: column
-        align-items: flex-start
-        gap: $gap-24
-        flex: 1 
-        margin: 24px 0px 0px 128px
-        min-height: 100vh
+.dashboard__column-one
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    gap: 24px
+    flex: 1 
+    margin: 24px 0px 0px 128px
+    min-height: 100vh
 
-    &__column-one-content
-        display: flex
-        flex-direction: column
-        gap: $gap-24
-        flex: 1 
-        width: 100%
+.dashboard__column-one-content
+    display: flex
+    flex-direction: column
+    gap: 24px
+    flex: 1 
+    width: 100%
 
-    &__column-two
-        display: flex
-        flex-direction: column
-        align-items: flex-start
-        gap: $gap-24
-        width: 372px
-        margin: 24px 24px 0px 0px
+.dashboard__column-two
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    gap: 24px
+    width: 372px
+    margin: 24px 24px 0px 0px
         
 </style>

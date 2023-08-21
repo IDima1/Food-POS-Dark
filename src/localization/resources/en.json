@@ -1,0 +1,110 @@
+{
+    "headers": {
+    "resto-name": "Jaegar Resto",
+    "confirmation": "Confirmation",
+    "orders": "Orders",
+    "choose-dishes": "Choose Dishes",
+    "payment": "Payment",
+
+    "dashboard": "Dashboard",
+    "most-ordered": "Most Ordered",
+    "most-type-of-order": "Most Type of Order",
+    "order-report": "Order Report",
+
+    "settings": "Settings",
+    "product-management": "Product Management"
+
+    },
+    "current-date": "Tuesday, 2 Feb 2021",
+
+    "categories": {
+        "hot-dishes": "Hot Dishes",
+        "cold-dishes": "Cold Dishes",
+        "soup": "Soup",
+        "grill": "Grill",
+        "appetizer": "Appetizer",
+        "dessert": "Dessert"
+    },
+
+    "payment-container": {
+        "methods-available": "payment method available",
+        "method-payment": "Payment method",
+        "method-card": "Credit Card",
+        "method-paypal": "Paypal",
+        "method-cash": "Cash",
+
+        "data-name": "Cardholder Name",
+        "data-number": "Card Number",
+        "data-date": "Expiration Date",
+        "data-cvv": "CVV",
+        "data-type": "Order Type",
+        "data-table": "Table no.",
+
+        "button-main": "Continue to Payment",
+        "button-confirm": "Confirm Payment"
+    },
+
+    "buttons": {
+        "payment-button": "Continue to Payment",
+        "confirm-button": "Confirm Payment",
+        "cancel-button": "Cancel",
+        "view-button": "View All",
+        "save-button": "Save Changes",
+        "discard-button": "Discard Changes",
+        "manage-button": "Manage Categories",
+        "add-button": "Add new dish"
+    },
+
+    "notification": {
+        "default-message-error": "Something went wrong",
+        "default-message-warning": "Something you are doing is not recommended",
+        "default-message-info": "Something is happening. Just want you to know that"
+    },
+
+    "cart": {
+        "item": "Item",
+        "qty": "QTY",
+        "price": "Price",
+        "discount": "Discount",
+        "subtotal": "Sub total",
+        "empty-message": "Cart is empty"
+    },
+
+    "order-card": {
+        "total-revenue": "Total Revenue",
+        "total-dish-ordered": "Total Dish Ordered",
+        "total-customer": "Total Customer"
+    },
+
+    "placeholders": {
+        "homepage-search": "Seach for food, coffee, etc..",
+        "cart-note": "Order Note...",
+        "payment-name": "Levi Ackerman",
+        "payment-number": "2584 1421 0897 1244",
+        "payment-date": "02/2022",
+        "payment-cvv": "● ● ●",
+        "payment-table": "8"
+    },
+
+    "tabs": {
+        "customer": "Customer",
+        "menu": "Menu",
+        "total-payment": "Total Payment",
+        "status": "Status"
+    },
+
+    "states": {
+        "dine-in": "Dine In",
+        "to-go": "To Go",
+        "delivery": "Delivery"
+    },
+    "errors": {
+        "default": "Something went wrong"
+    },
+    "validations": {
+        "field-error_required": "Please fill out this field",
+        "field-error_email": "Field must be a valid email",
+        "field-error_alpha": "Field must be contain only letters",
+        "field-error_numeric": "Field must be contain only numbers"
+    }
+}

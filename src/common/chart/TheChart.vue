@@ -17,7 +17,9 @@ export default {
     methods: {
         createChart() {
             Highcharts.chart('chartContainer', {
-
+            accessibility: {
+                enabled: false
+            },
             chart: {
                 type: 'column',
                 inverted: true,

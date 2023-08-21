@@ -10,7 +10,7 @@
 import HomepageHeader from "@/pages/homepage/HomepageHeader.vue";
 import HomepageMenu from "@/pages/homepage/HomepageMenu.vue";
 import Cart from "@/pages/cart/Cart.vue";
-import { useStore } from "@/pinia/pinia.js";
+import { useStore } from "@/store/index.js";
   
 const store = useStore();
 const cart = store.CART;

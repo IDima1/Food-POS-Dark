@@ -44,7 +44,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { useRoute, useRouter} from 'vue-router';
 
 const $route = useRoute();
@@ -55,11 +54,11 @@ const showAlert = () => {
 </script>
 
 <style lang="sass" scoped>
-@import '@/styles/variables.sass'
+@import '@/styles/app.sass'
 
 .sidebar
     padding: 20px 0px
-    background-color: $darkBg2
+    background-color: $background-secondary-main
     height: 100vh
     display: flex
     flex-direction: column
@@ -69,78 +68,76 @@ const showAlert = () => {
     position: fixed
     width: 104px
 
-    &__menu
-        height: 100%
-        display: flex
-        flex-direction: column
-        justify-content: space-evenly
-        padding-bottom: 50px
+.sidebar__logo
+    background-color: #82604e
+    width: 56px
+    height: 56px
+    border-radius: 15px
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-shrink: 0
+.sidebar_logo-img
+    width: 36px
+    height: 36px
 
-    &__logo
-        background-color: #82604e
-        width: 56px
-        height: 56px
-        border-radius: 15px
-        display: flex
-        justify-content: center
-        align-items: center
-        flex-shrink: 0
+.sidebar__menu
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    padding-bottom: 50px
 
-        &-img
-            width: 36px
-            height: 36px
+.sidebar__menu-item
+    width: 56px
+    height: 56px
+    display: flex
+    justify-content: center
+    align-items: center
+    position: relative
+    z-index: 10
+    cursor: pointer
+    border-radius: 15px
 
-    &__menu-logout
-        width: 56px
-        height: 56px
-        border-radius: 15px
-        display: flex
-        justify-content: center
-        align-items: center
-        flex-shrink: 0
-        transition: border 0.2s ease-in-out
+.sidebar__menu-logout
+    width: 56px
+    height: 56px
+    border-radius: 15px
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-shrink: 0
+    transition: border 0.2s ease-in-out
 
-    &__menu-item
-        width: 56px
-        height: 56px
-        display: flex
-        justify-content: center
-        align-items: center
-        position: relative
-        z-index: 10
-        cursor: pointer
-        border-radius: 15px
+.sidebar__menu-item.active-item
+    background-color: $primary-main
+    border-color: $primary-main
+    z-index: 2
+    position: relative
 
-        &.active-item
-            background-color: $primary
-            border-color: $primary
-            z-index: 2
-            position: relative
+.sidebar__menu-item.active-item::before
+    content: url("../assets/icons/SidebarActive.svg")
+    position: absolute
+    z-index: -1
+    left: -12px
+    top: -25px
+    width: 56px
+    height: 56px
+    border-radius: 15px
 
-            &::before
-                content: url("../assets/icons/SidebarActive.svg")
-                position: absolute
-                z-index: -1
-                left: -12px
-                top: -25px
-                width: 56px
-                height: 56px
-                border-radius: 15px
+.sidebar__menu-item.active-item::after
+    content: ''
+    position: absolute
+    z-index: 0
+    top: 0
+    left: 0
+    width: 56px
+    height: 56px
+    border-radius: 15px
+    background-color: $primary-main
+    box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.32)
 
-            &::after
-                content: ''
-                position: absolute
-                z-index: 0
-                top: 0
-                left: 0
-                width: 56px
-                height: 56px
-                border-radius: 15px
-                background-color: $primary
-                box-shadow: 0px 8px 24px 0px rgba(234, 124, 105, 0.32)
-
-            img
-                position: relative
-                z-index: 1
-
+.sidebar__menu-item.active-item img
+    position: relative
+    z-index: 1
 </style>

@@ -1,22 +1,38 @@
-// colors
-$red: #FF7CA3
-$base: #FAFAFA
-$darkBg1: #252836
-$darkBg2: #1F1D2B
-$darkLine: #393C49
-$formBg: #2D303E
-$primary: #EA7C69
-$secondary: #9288E0
-$textLighter: #E0E6E9
-$textGray:#889898
-$textLight: #ABBBC2
-$white: #FFF
-$blue: #65B0F6
-$green: #50D1AA
-$orange: #FFB572
-$purple: #9290FE
-$red: #FF7CA3
+@import '@/styles/_app-colors.sass'
 
-//settings
-$gap-20: 20px
-$gap-24: 24px
+:root,
+:before,
+:after 
+    --white: #{$white}
+    --base: #{$base}
+
+    --background-primary-main: #{$background-primary-main}
+    --background-secondary-main: #{$background-secondary-main}
+    --background-tertiary-main: #{$background-tertiary-main}
+
+    --completed-main: #{$completed-main}
+    --preparing-main: #{$preparing-main}
+    --pending-main: #{$pending-main}
+
+    --positive-main: #{$positive-main}
+    --negative-main: #{$negative-main}
+
+    --derivery-column-main:#{$derivery-column-main}
+    --togo-column-main: #{$togo-column-main}
+    --dinein-column-main: #{$dinein-column-main}
+
+    --border-primary-main: #{$border-primary-main}
+
+    --text-primary-light: #{$text-primary-light}
+    --text-primary-main: #{$text-primary-main}
+    --text-primary-dark: #{$text-primary-dark} 
+
+    --text-secondary-main: #{$text-secondary-main}
+
+    --primary-main: #{$primary-main}
+    --secondary-main: #{$secondary-main}
+
+    /* App variables */
+
+    --app-txt: #{$text-primary-main}
+    --app-font-family: 'Barlow'
